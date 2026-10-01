@@ -38,8 +38,8 @@ a:focus-visible,button:focus-visible{outline:3px solid #7ED6D4;outline-offset:3p
 .seg button[aria-pressed="true"]{background:var(--g);color:#fff}
 #code{background:#fff;border-radius:14px;padding:10px;width:200px;height:200px;margin:0 auto;display:flex;align-items:center;justify-content:center}
 #code svg{width:100%;height:100%;display:block}
-.cap{margin:12px 0 12px;font-size:14px;line-height:1.4;color:var(--sub);min-height:2.8em}
-.share{font:inherit;font-weight:700;font-size:15px;width:100%;border:0;border-radius:14px;padding:13px;background:var(--g);color:#fff;cursor:pointer}
+.cap{margin:12px 0 12px;font-size:15px;font-weight:700;line-height:1.4;color:var(--sub)}
+.share{display:flex;align-items:center;justify-content:center;width:64px;height:48px;margin:0 auto;border:0;border-radius:14px;background:var(--g);color:#fff;cursor:pointer}
 .msg{min-height:1.2em;margin:8px 0 0;font-size:13px;color:var(--sub);overflow-wrap:anywhere}
 </style>
 </head>
@@ -57,20 +57,20 @@ a:focus-visible,button:focus-visible{outline:3px solid #7ED6D4;outline-offset:3p
   </header>
   <div class="body">
     <nav class="links">
-      <a class="main" href="tel:+998903431001"><span>Позвонить<small>+998 90 343 10 01</small></span><b>→</b></a>
+      <a class="main" href="tel:+998903431001"><span>Позвонить / Call<small>+998 90 343 10 01</small></span><b>→</b></a>
       <a href="https://wa.me/998903431001" target="_blank" rel="noopener"><span>WhatsApp<small>+998 90 343 10 01</small></span><b>→</b></a>
       <a href="https://t.me/+998903431001" target="_blank" rel="noopener"><span>Telegram<small>+998 90 343 10 01</small></span><b>→</b></a>
-      <a href="mailto:farhod@musavartex.uz"><span>Почта<small>farhod@musavartex.uz</small></span><b>→</b></a>
-      <a href="https://www.musavartex.uz" target="_blank" rel="noopener"><span>Сайт<small>www.musavartex.uz</small></span><b>→</b></a>
+      <a href="mailto:farhod@musavartex.uz"><span>E-mail<small>farhod@musavartex.uz</small></span><b>→</b></a>
+      <a href="https://www.musavartex.uz" target="_blank" rel="noopener"><span>Web site<small>www.musavartex.uz</small></span><b>→</b></a>
     </nav>
     <section class="qr" id="qrbox" aria-label="QR-код">
       <div class="seg" role="group" aria-label="Что открыть по QR-коду">
-        <button type="button" id="tabCard" aria-pressed="true">Визитка</button>
-        <button type="button" id="tabContact" aria-pressed="false">Контакт</button>
+        <button type="button" id="tabCard" aria-pressed="true">QR</button>
+        <button type="button" id="tabContact" aria-pressed="false">Contact</button>
       </div>
       <div id="code"></div>
       <p class="cap" id="cap"></p>
-      <button type="button" class="share" id="share">Поделиться визиткой</button>
+      <button type="button" class="share" id="share" aria-label="Share" title="Share"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></button>
       <p class="msg" id="msg" role="status"></p>
     </section>
   </div>
@@ -92,7 +92,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #7ED6D4;outline-offset:3p
   function show(which){
     var isCard=which==="card";
     tabCard.setAttribute("aria-pressed",isCard);tabContact.setAttribute("aria-pressed",!isCard);
-    cap.textContent=isCard?"Наведите камеру телефона, чтобы открыть визитку":"Наведите камеру, чтобы добавить контакт в телефон";
+    cap.textContent="Scan";
     draw(isCard?CARD_URL:VCARD);
   }
   tabCard.onclick=function(){show("card")};tabContact.onclick=function(){show("contact")};

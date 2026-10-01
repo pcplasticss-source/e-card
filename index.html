@@ -39,7 +39,7 @@ h1{font:700 26px/1.1 Unbounded,Manrope,system-ui,sans-serif;letter-spacing:-.01e
 .list span{margin-left:auto;color:var(--muted);font-weight:400;font-size:13px}
 .qr{margin-top:22px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px;text-align:center}
 .tabs{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;margin-bottom:14px}
-.tabs button{background:none;border:0;color:var(--muted);font:600 14px Manrope,sans-serif;padding:7px 16px;border-radius:999px;cursor:pointer}
+.tabs button{background:none;border:0;color:var(--muted);font:600 14px Manrope,sans-serif;padding:7px 12px;border-radius:999px;cursor:pointer}
 .tabs button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
 #qr{background:#fff;padding:12px;border-radius:16px;display:inline-block;line-height:0}
 #qr svg{width:200px;height:200px}
@@ -82,8 +82,8 @@ a.share{display:inline-block;text-decoration:none}
 
   <nav class="list" aria-label="Contacts">
     <a href="https://wa.me/message/3WIUMTUWNXPNM1" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WhatsApp</a>
-    <a href="https://t.me/rgbulatov" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Telegram<span>@rgbulatov</span></a>
-    <a href="https://www.instagram.com/bulatov.rasul" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>Instagram<span>@bulatov.rasul</span></a>
+    <a href="https://t.me/pcplastics" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Telegram<span>@pcplastics</span></a>
+    <a href="https://www.instagram.com/pcplasticss" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>Instagram<span>@pcplasticss</span></a>
     <a href="mailto:rasul@hayatplastics.uz"><svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>E-mail<span>rasul@hayatplastics.uz</span></a>
     <a href="https://hayatplastics.uz" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><b data-t="site" style="font-weight:600">Сайт компании</b><span>hayatplastics.uz</span></a>
     <a href="https://yandex.ru/maps/?pt=69.315427,41.221520&z=16&l=map" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><div><b data-t="office" style="font-weight:600">Офис на карте</b><div class="ad">Тошкент шахар, Бектемир тумани, Олтин топган 43</div></div></a>
@@ -92,10 +92,11 @@ a.share{display:inline-block;text-decoration:none}
 
   <section class="qr">
     <div class="tabs" role="group">
-      <button data-q="url" aria-pressed="true" data-t="qurl">Эта визитка</button><button data-q="vc" aria-pressed="false" data-t="qvc">В контакты</button>
+      <button data-q="url" aria-pressed="true" data-t="qurl">Эта визитка</button><button data-q="vc" aria-pressed="false" data-t="qvc">В контакты</button><button data-q="card" aria-pressed="false" data-t="qcard">Карта</button>
     </div>
     <div><div id="qr" aria-label="QR"></div></div>
     <p class="hint" data-t="hint">Наведите камеру телефона на код</p>
+    <div><button class="share" id="copy" hidden data-t="copy">Скопировать номер карты</button></div><p class="hint" id="cn" hidden></p>
     <button class="share" id="share" data-t="share">Поделиться визиткой</button>
   </section>
 </main>
@@ -103,19 +104,25 @@ a.share{display:inline-block;text-decoration:none}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
 var T={
-ru:{role:"Финансовый директор",call:"Позвонить",call2:"Позвонить",site:"Сайт компании",office:"Офис на карте",qurl:"Эта визитка",qvc:"В контакты",hint:"Наведите камеру телефона на код",share:"Поделиться визиткой",pay:"Реквизиты для перевода",copy:"Скопировать номер карты",copied:"Номер скопирован",home:"Домашний адрес",onmap:"Открыть на карте"},
-uz:{role:"Moliya direktori",call:"Qo‘ng‘iroq qilish",call2:"Qo‘ng‘iroq qilish",site:"Kompaniya sayti",office:"Ofis xaritada",qurl:"Bu vizitka",qvc:"Kontaktlarga",hint:"Telefon kamerasini kodga qarating",share:"Vizitkani ulashish",pay:"O‘tkazma uchun rekvizitlar",copy:"Karta raqamini nusxalash",copied:"Raqam nusxalandi",home:"Uy manzili",onmap:"Xaritada ochish"},
-en:{role:"Chief Financial Officer",call:"Call",call2:"Call",site:"Company website",office:"Office on map",qurl:"This card",qvc:"Add to contacts",hint:"Point your phone camera at the code",share:"Share this card",pay:"Payment details",copy:"Copy card number",copied:"Number copied",home:"Home address",onmap:"Open on map"}};
+ru:{role:"Финансовый директор",call:"Позвонить",call2:"Позвонить",site:"Сайт компании",office:"Офис на карте",qurl:"Эта визитка",qvc:"В контакты",qcard:"Карта",copy:"Скопировать номер карты",copied:"Номер скопирован",hint:"Наведите камеру телефона на код",share:"Поделиться визиткой",pay:"Реквизиты для перевода",copy:"Скопировать номер карты",copied:"Номер скопирован",home:"Домашний адрес",onmap:"Открыть на карте"},
+uz:{role:"Moliya direktori",call:"Qo‘ng‘iroq qilish",call2:"Qo‘ng‘iroq qilish",site:"Kompaniya sayti",office:"Ofis xaritada",qurl:"Bu vizitka",qvc:"Kontaktlarga",qcard:"Karta",copy:"Karta raqamini nusxalash",copied:"Raqam nusxalandi",hint:"Telefon kamerasini kodga qarating",share:"Vizitkani ulashish",pay:"O‘tkazma uchun rekvizitlar",copy:"Karta raqamini nusxalash",copied:"Raqam nusxalandi",home:"Uy manzili",onmap:"Xaritada ochish"},
+en:{role:"Chief Financial Officer",call:"Call",call2:"Call",site:"Company website",office:"Office on map",qurl:"This card",qvc:"Add to contacts",qcard:"Card",copy:"Copy card number",copied:"Number copied",hint:"Point your phone camera at the code",share:"Share this card",pay:"Payment details",copy:"Copy card number",copied:"Number copied",home:"Home address",onmap:"Open on map"}};
 function setLang(l){document.documentElement.lang=l;document.querySelectorAll("[data-t]").forEach(function(e){e.textContent=T[l][e.dataset.t]});
 document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.l===l)});try{localStorage.setItem("lang",l)}catch(e){}}
 document.querySelectorAll(".lang button").forEach(function(b){b.onclick=function(){setLang(b.dataset.l)}});
 window.CARD_URL="https://pcplasticss-source.github.io/e-card/";
 var VC="BEGIN:VCARD\nVERSION:3.0\nN:Bulatov;Rasul;;;\nFN:Rasul Bulatov\nORG:Hayat Plastics\nTITLE:Chief Financial Officer\nTEL;TYPE=CELL:+998905097557\nTEL;TYPE=CELL:+77079740156\nEMAIL:rasul@hayatplastics.uz\nURL:https://hayatplastics.uz\nEND:VCARD";
-function draw(m){var box=document.getElementById("qr");try{var q=qrcode(0,"M");q.addData(m==="vc"?VC:(window.CARD_URL||location.href.split("#")[0]));q.make();box.innerHTML=q.createSvgTag(4,0)}catch(e){box.textContent="QR"}
-document.querySelectorAll(".tabs button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.q===m)})}
+function draw(m){var box=document.getElementById("qr");try{var q=qrcode(0,"M");q.addData(m==="vc"?VC:m==="card"?"5614682905807170":(window.CARD_URL||location.href.split("#")[0]));q.make();box.innerHTML=q.createSvgTag(4,0)}catch(e){box.textContent="QR"}
+document.querySelectorAll(".tabs button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.q===m)});document.getElementById("copy").hidden=m!=="card";document.getElementById("cn").hidden=true}
 document.querySelectorAll(".tabs button").forEach(function(b){b.onclick=function(){draw(b.dataset.q)}});
 document.getElementById("share").onclick=function(){var d={title:"Rasul Bulatov — Hayat Plastics",url:location.href};
 if(navigator.share){navigator.share(d).catch(function(){})}else if(navigator.clipboard){navigator.clipboard.writeText(location.href).catch(function(){})}};
+var CN="5614682905807170";
+document.getElementById("copy").onclick=function(){var b=this;
+function ok(){b.textContent=T[document.documentElement.lang].copied;setTimeout(function(){b.textContent=T[document.documentElement.lang].copy},2000)}
+function fb(){var p=document.getElementById("cn");p.textContent=CN.replace(/(\d{4})(?=\d)/g,"$1 ");p.hidden=false}
+function old(){try{var t=document.createElement("textarea");t.value=CN;t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();var r=document.execCommand("copy");document.body.removeChild(t);r?ok():fb()}catch(e){fb()}}
+if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(CN).then(ok,old)}else{old()}};
 var saved="ru";try{saved=localStorage.getItem("lang")||"ru"}catch(e){}
 setLang(T[saved]?saved:"ru");draw("url");
 </script>

@@ -60,6 +60,7 @@ h1{font:700 26px/1.1 Unbounded,Manrope,system-ui,sans-serif;letter-spacing:-.01e
 .list span.ph{font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
 .num{font:700 21px/1.2 Unbounded,Manrope,sans-serif;letter-spacing:.04em;margin:4px 0 6px;word-spacing:.15em}
 a.share{display:inline-block;text-decoration:none}
+.share.ic{display:inline-flex;align-items:center;justify-content:center;padding:10px 24px}
 .more .ad{font-size:15px;color:var(--text);margin-bottom:4px}
 </style>
 </head>
@@ -75,8 +76,8 @@ a.share{display:inline-block;text-decoration:none}
   </section>
 
   <div class="call">
-    <a href="tel:+998905097557"><span data-t="call">Позвонить</span><small>+998 90 509 75 57 · UZ</small></a>
-    <a href="tel:+77079740156"><span data-t="call2">Позвонить</span><small>+7 707 974 01 56 · KZ</small></a>
+    <a href="tel:+998905097557"><span data-t="call">Позвонить / Call</span><small>+998 90 509 75 57 · UZ</small></a>
+    <a href="tel:+77079740156"><span data-t="call2">Позвонить / Call</span><small>+7 707 974 01 56 · KZ</small></a>
   </div>
 
   <nav class="list" aria-label="Contacts">
@@ -85,26 +86,26 @@ a.share{display:inline-block;text-decoration:none}
     <a href="tg://resolve?domain=hayatplastics" id="tg-link" data-web="https://t.me/hayatplastics"><svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Telegram<span>@hayatplastics</span></a>
     <a href="https://www.instagram.com/hayat_plastics?stkn=OG9mNTM0aXJoMXRj" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>Instagram<span>@hayat_plastics</span></a>
     <a href="mailto:rasul@hayatplastics.uz"><svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>E-mail<span>rasul@hayatplastics.uz</span></a>
-    <a href="https://hayatplastics.uz" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><b data-t="site" style="font-weight:600">Сайт компании</b><span>hayatplastics.uz</span></a>
-    <a href="https://yandex.ru/maps/?pt=69.315427,41.221520&z=16&l=map" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><div><b data-t="office" style="font-weight:600">Офис на карте</b><div class="ad">Тошкент шахар, Бектемир тумани, Олтин топган 43</div></div></a>
+    <a href="https://hayatplastics.uz" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><b data-t="site" style="font-weight:600">Web site</b><span>hayatplastics.uz</span></a>
+    <a href="https://yandex.ru/maps/?pt=69.315427,41.221520&z=16&l=map" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><div><b data-t="office" style="font-weight:600">Location</b><div class="ad">Тошкент шахар, Бектемир тумани, Олтин топган 43</div></div></a>
   </nav>
 
 
   <section class="qr">
     <div class="tabs" role="group">
-      <button data-q="url" aria-pressed="true" data-t="qurl">Эта визитка</button><button data-q="vc" aria-pressed="false" data-t="qvc">В контакты</button><button data-q="card" aria-pressed="false" data-t="qcard">Карта</button>
+      <button data-q="url" aria-pressed="true" data-t="qurl">QR</button><button data-q="vc" aria-pressed="false" data-t="qvc">Contact</button><button data-q="card" aria-pressed="false" data-t="qcard">Uzcard</button>
     </div>
     <div><div id="qr" aria-label="QR"></div></div>
-    <p class="hint" data-t="hint">Наведите камеру телефона на код</p>
+    <p class="hint" data-t="hint">Scan</p>
     <div><button class="share" id="copy" hidden data-t="copy">Скопировать номер карты</button></div><p class="hint" id="cn" hidden></p>
-    <button class="share" id="share" data-t="share">Поделиться визиткой</button>
+    <button class="share ic" id="share" aria-label="Share" title="Share"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></button>
   </section>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
 var T={
-ru:{role:"Финансовый директор",call:"Позвонить",call2:"Позвонить",site:"Сайт компании",office:"Офис на карте",qurl:"Эта визитка",qvc:"В контакты",qcard:"Карта",copy:"Скопировать номер карты",copied:"Номер скопирован",hint:"Наведите камеру телефона на код",share:"Поделиться визиткой",pay:"Реквизиты для перевода",copy:"Скопировать номер карты",copied:"Номер скопирован",home:"Домашний адрес",onmap:"Открыть на карте"},
+ru:{role:"Финансовый директор",call:"Позвонить / Call",call2:"Позвонить / Call",site:"Web site",office:"Location",qurl:"QR",qvc:"Contact",qcard:"Uzcard",copy:"Скопировать номер карты",copied:"Номер скопирован",hint:"Scan",share:"Share",pay:"Реквизиты для перевода",copy:"Скопировать номер карты",copied:"Номер скопирован",home:"Домашний адрес",onmap:"Открыть на карте"},
 uz:{role:"Moliya direktori",call:"Qo‘ng‘iroq qilish",call2:"Qo‘ng‘iroq qilish",site:"Kompaniya sayti",office:"Ofis xaritada",qurl:"Bu vizitka",qvc:"Kontaktlarga",qcard:"Karta",copy:"Karta raqamini nusxalash",copied:"Raqam nusxalandi",hint:"Telefon kamerasini kodga qarating",share:"Vizitkani ulashish",pay:"O‘tkazma uchun rekvizitlar",copy:"Karta raqamini nusxalash",copied:"Raqam nusxalandi",home:"Uy manzili",onmap:"Xaritada ochish"},
 en:{role:"Chief Financial Officer",call:"Call",call2:"Call",site:"Company website",office:"Office on map",qurl:"This card",qvc:"Add to contacts",qcard:"Card",copy:"Copy card number",copied:"Number copied",hint:"Point your phone camera at the code",share:"Share this card",pay:"Payment details",copy:"Copy card number",copied:"Number copied",home:"Home address",onmap:"Open on map"}};
 function setLang(l){document.documentElement.lang=l;document.querySelectorAll("[data-t]").forEach(function(e){e.textContent=T[l][e.dataset.t]});

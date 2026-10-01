@@ -57,6 +57,7 @@ h1{font:700 26px/1.1 Unbounded,Manrope,system-ui,sans-serif;letter-spacing:-.01e
 .more summary::after{content:"+";float:right;color:var(--accent);font-size:20px;line-height:1}
 .more[open] summary::after{content:"\2212"}
 .more .body{padding:0 16px 16px;text-align:center}
+.list span.ph{font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
 .num{font:700 21px/1.2 Unbounded,Manrope,sans-serif;letter-spacing:.04em;margin:4px 0 6px;word-spacing:.15em}
 a.share{display:inline-block;text-decoration:none}
 .more .ad{font-size:15px;color:var(--text);margin-bottom:4px}
@@ -86,7 +87,8 @@ a.share{display:inline-block;text-decoration:none}
   </div>
 
   <nav class="list" aria-label="Contacts">
-    <a href="https://wa.me/77079740156" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WhatsApp<span>+7 707 974 01 56 · KZ</span></a>
+    <a href="https://wa.me/77079740156" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WhatsApp<span class="ph">+7 707 974 01 56 · KZ</span></a>
+    <a href="weixin://" id="wc-link"><svg viewBox="0 0 24 24"><path d="M9 3C5.1 3 2 5.5 2 8.6c0 1.8 1 3.3 2.6 4.3L4 15.5l3-1.5c.6.2 1.3.2 2 .2 3.9 0 7-2.5 7-5.6S12.9 3 9 3Z"/><path d="M22 15.3c0-2.3-2.1-4.2-4.8-4.2s-4.8 1.9-4.8 4.2 2.1 4.2 4.8 4.2c.6 0 1.2-.1 1.7-.2l2 1-.5-1.9c1-.8 1.6-1.9 1.6-3.1Z"/></svg>WeChat<span class="ph">+998 90 509 75 57 · UZ</span></a>
     <a href="tg://resolve?domain=hayatplastics" id="tg-link" data-web="https://t.me/hayatplastics"><svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Telegram<span>@hayatplastics</span></a>
     <a href="https://www.instagram.com/hayat_plastics?stkn=OG9mNTM0aXJoMXRj" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>Instagram<span>@hayat_plastics</span></a>
     <a href="mailto:rasul@hayatplastics.uz"><svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>E-mail<span>rasul@hayatplastics.uz</span></a>
@@ -132,5 +134,5 @@ if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch
 var saved="ru";try{saved=localStorage.getItem("lang")||"ru"}catch(e){}
 setLang(T[saved]?saved:"ru");draw("url");
 </script>
-<script>(function(){var a=document.getElementById("tg-link");if(!a)return;a.addEventListener("click",function(e){e.preventDefault();var t=setTimeout(function(){if(!document.hidden)location.href=a.dataset.web},1500);document.addEventListener("visibilitychange",function(){if(document.hidden)clearTimeout(t)});location.href=a.getAttribute("href")})})();</script></body>
+<script>(function(){var a=document.getElementById("tg-link");if(!a)return;a.addEventListener("click",function(e){e.preventDefault();var t=setTimeout(function(){if(!document.hidden)location.href=a.dataset.web},1500);document.addEventListener("visibilitychange",function(){if(document.hidden)clearTimeout(t)});location.href=a.getAttribute("href")})})();</script><script>(function(){var w=document.getElementById("wc-link");if(!w)return;w.addEventListener("click",function(){try{navigator.clipboard.writeText("+998905097557")}catch(e){}})})();</script></body>
 </html>

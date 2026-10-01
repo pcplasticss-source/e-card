@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071716">
+<title>Клиенты · Hayat Plastics</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{--bg:#071716;--cd:#0e2523;--ln:#1d3d3a;--tx:#e8f3f1;--mu:#8fb0ab;--ac:#2fd6b5;--rd:#ff7a7a}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{padding:env(safe-area-inset-top) 0 calc(76px + env(safe-area-inset-bottom))}
+header{position:sticky;top:env(safe-area-inset-top);background:var(--bg);padding:12px 14px 8px;z-index:2}
+h1{font-size:22px;margin:0 0 8px}h1 small{font-size:12px;font-weight:400;color:var(--mu);margin-left:6px}
+input,select,textarea{width:100%;background:var(--cd);color:var(--tx);border:1px solid var(--ln);border-radius:10px;padding:11px 12px;font:inherit}
+textarea{min-height:76px;resize:vertical}
+label{display:block;color:var(--mu);font-size:13px;margin:10px 0 0}
+label input,label select,label textarea{margin-top:4px;color:var(--tx);font-size:16px}
+main{padding:4px 14px}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:4px 0 10px}
+.chip{flex:none;border:1px solid var(--ln);background:none;color:var(--mu);border-radius:20px;padding:6px 12px;font:inherit;font-size:14px}
+.chip.on{background:var(--ac);color:#04201b;border-color:var(--ac)}
+.row{background:var(--cd);border:1px solid var(--ln);border-radius:12px;padding:12px;margin-bottom:8px}
+.top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.bd{flex:none;font-size:12px;color:#04201b;border-radius:10px;padding:2px 8px;font-weight:600}
+.sub{color:var(--mu);font-size:14px;margin-top:2px}
+.nx{font-size:14px;margin-top:6px}.od{color:var(--rd);font-weight:600}
+.lg{color:var(--mu);font-size:14px;margin-top:6px;border-top:1px solid var(--ln);padding-top:6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.empty{color:var(--mu);text-align:center;margin-top:40px}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:#0a1d1b;border-top:1px solid var(--ln);padding-bottom:env(safe-area-inset-bottom);z-index:3}
+.tab{flex:1;background:none;border:0;color:var(--mu);padding:14px 0;font:inherit}
+.tab.on{color:var(--ac);font-weight:700}
+#add{position:fixed;right:16px;bottom:calc(72px + env(safe-area-inset-bottom));width:56px;height:56px;border-radius:50%;border:0;background:var(--ac);color:#04201b;font-size:32px;line-height:1;z-index:3}
+#sheet{position:fixed;inset:0;background:var(--bg);overflow:auto;z-index:5;padding:env(safe-area-inset-top) 14px calc(30px + env(safe-area-inset-bottom))}
+#sheet[hidden]{display:none}
+.bar{display:flex;justify-content:space-between;align-items:center;padding:10px 0;position:sticky;top:0;background:var(--bg)}
+.bar button,.btn,.pri{border:1px solid var(--ln);background:var(--cd);color:var(--tx);border-radius:10px;padding:10px 14px;font:inherit;text-decoration:none;text-align:center}
+.pri{background:var(--ac);color:#04201b;border-color:var(--ac);font-weight:700;width:100%;margin-top:10px}
+.dg{color:var(--rd)!important}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+h3{margin:22px 0 4px;font-size:17px}
+.le{border-left:3px solid var(--ac);padding:2px 0 2px 10px;margin:10px 0}
+.le small{color:var(--mu);display:flex;justify-content:space-between}
+.le a{color:var(--rd);padding:0 6px}
+.st{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--ln)}
+.hint{color:var(--mu);font-size:14px;margin:14px 0}
+</style></head><body>
+<header><h1>Клиенты <small id="st"></small></h1><input id="q" type="search" placeholder="Поиск по названию, имени, телефону"></header>
+<main id="main"></main>
+<button id="add" aria-label="Новый клиент">+</button>
+<nav><button class="tab" data-t="today">Сегодня</button><button class="tab" data-t="all">Все клиенты</button><button class="tab" data-t="more">Сводка</button></nav>
+<div id="sheet" hidden></div>
+<script>
+var K="crm-hayat-v1",S=["Новый","Переговоры","КП отправлено","Образцы / тесты","Согласование","Заказ","Отказ"],
+COL=["#6fa0ff","#f0c75a","#f29b57","#c58cf0","#5cd0ec","#4fdc9a","#9aa3a8"],
+D=[],tab="today",flt="",cur=null,$=function(i){return document.getElementById(i)};
+function load(){try{D=JSON.parse(localStorage.getItem(K)||"[]")}catch(e){D=[]}}
+var G=null;try{G=JSON.parse(localStorage.getItem("crm-gh"))}catch(e){}
+function saveG(){localStorage.setItem("crm-gh",JSON.stringify(G))}
+function saveLocal(){try{localStorage.setItem(K,JSON.stringify(D))}catch(e){alert("Не удалось сохранить данные. Проверьте память телефона.")}}
+var T;function save(){saveLocal();if(!G)return;localStorage.setItem(K+"-dirty","1");clearTimeout(T);T=setTimeout(function(){push()},1200)}
+function st(t){var e=$("st");if(e)e.textContent=t}
+function err(e){st(e===401||e===403?"Нет доступа: проверьте токен":e===404?"Репозиторий не найден или нет доступа":"Нет связи. Данные в телефоне")}
+function b64e(s){var b=new TextEncoder().encode(s),r="";b.forEach(function(x){r+=String.fromCharCode(x)});return btoa(r)}
+function b64d(s){var r=atob((s||"").replace(/\n/g,"")),a=new Uint8Array(r.length);for(var i=0;i<r.length;i++)a[i]=r.charCodeAt(i);return new TextDecoder().decode(a)}
+function api(m,body){return fetch("https://api.github.com/repos/"+G.repo+"/contents/data.json",{method:m,cache:"no-store",headers:{Authorization:"Bearer "+G.tok,Accept:"application/vnd.github+json"},body:body?JSON.stringify(body):undefined})}
+function push(n){n=n||0;if(!G)return;st("Сохранение…");var b={message:"update "+today(),content:b64e(JSON.stringify(D))};if(G.sha)b.sha=G.sha;
+return api("PUT",b).then(function(r){
+if((r.status===409||r.status===422)&&n<2)return api("GET").then(function(g){if(!g.ok)throw g.status;return g.json().then(function(j){G.sha=j.sha;return push(n+1)})});
+if(!r.ok)throw r.status;
+return r.json().then(function(j){G.sha=j.content.sha;saveG();localStorage.removeItem(K+"-dirty");st("Сохранено на сервере")})}).catch(err)}
+function pull(ask){if(!G)return;st("Синхронизация…");api("GET").then(function(r){
+if(r.status===404){G.sha=null;return push()}
+if(!r.ok)throw r.status;
+return r.json().then(function(j){G.sha=j.sha;saveG();var a=JSON.parse(b64d(j.content)||"[]");
+if(ask&&D.length&&!confirm("На сервере уже есть данные. Заменить ими данные в этом телефоне? (Отмена: отправить на сервер данные телефона)"))return push();
+if(Array.isArray(a)){D=a;saveLocal();localStorage.removeItem(K+"-dirty")}
+st("Синхронизировано");render()})}).catch(err)}
+function srv(){return '<h3>Сервер</h3>'+(G?'<p class="hint">Данные хранятся на сервере: '+esc(G.repo)+'. Копия остаётся и в телефоне.</p><button class="pri" id="gs">Синхронизировать сейчас</button><button class="btn" id="gd" style="width:100%;margin-top:10px">Отключить сервер</button>':'<p class="hint">Данные пока только в телефоне. Подключите приватный репозиторий GitHub, чтобы хранить их на сервере.</p><label>Репозиторий (логин/название)<input id="gr" placeholder="ваш-логин/crm-data" autocapitalize="none"></label><label>Токен доступа<input id="gt" type="password" autocomplete="off"></label><button class="pri" id="gc">Подключить</button>')}
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function today(){var d=new Date();return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2)}
+function fmt(s){return s?s.split("-").reverse().slice(0,2).join("."):""}
+function tgUrl(v){v=(v||"").trim().replace(/^@/,"").replace(/^https?:\/\/t\.me\//,"");if(!v)return"";return /^[+\d][\d\s()-]+$/.test(v)?"https://t.me/+"+v.replace(/\D/g,""):"https://t.me/"+v}
+function row(c){var l=c.log&&c.log[0],od=c.next&&c.next<today();
+return '<div class="row" data-id="'+c.id+'"><div class="top"><b>'+esc(c.company||"Без названия")+'</b><span class="bd" style="background:'+COL[c.stage]+'">'+S[c.stage]+'</span></div><div class="sub">'+esc([c.person,c.product].filter(Boolean).join(" · "))+'</div>'+(c.next?'<div class="nx'+(od?" od":"")+'">Связаться: '+fmt(c.next)+(od?" (просрочено)":"")+'</div>':"")+(l?'<div class="lg">'+esc(l.text)+'</div>':"")+'</div>'}
+function render(){
+document.querySelectorAll(".tab").forEach(function(b){b.classList.toggle("on",b.dataset.t===tab)});
+$("add").hidden=tab==="more";
+var m=$("main"),t=today();
+if(tab==="more"){var n=S.map(function(s,i){return '<div class="st"><span>'+s+'</span><b>'+D.filter(function(c){return c.stage===i}).length+'</b></div>'}).join("");
+m.innerHTML='<h3>Всего клиентов: '+D.length+'</h3>'+n+srv()+'<h3>Резервная копия</h3><p class="hint">Данные хранятся только в этом телефоне. Если очистить данные браузера или сменить телефон, они пропадут. Сохраняйте копию раз в неделю.</p><button class="pri" id="ex">Сохранить копию в файл</button><label class="btn" style="display:block;margin-top:10px">Загрузить копию из файла<input id="im" type="file" accept=".json,application/json" hidden></label>';return}
+var q=$("q").value.trim().toLowerCase();
+var L=D.filter(function(c){
+if(tab==="today"&&!(c.next&&c.next<=t&&c.stage<5))return false;
+if(flt!==""&&c.stage!=flt)return false;
+return !q||[c.company,c.person,c.phone,c.tg,c.city,c.product].join(" ").toLowerCase().indexOf(q)>-1});
+L.sort(tab==="today"?function(a,b){return a.next<b.next?-1:1}:function(a,b){return(b.upd||0)-(a.upd||0)});
+var ch="";if(tab==="all"){ch='<div class="chips"><button class="chip'+(flt===""?" on":"")+'" data-f="">Все</button>'+S.map(function(s,i){return '<button class="chip'+(flt===String(i)?" on":"")+'" data-f="'+i+'">'+s+'</button>'}).join("")+'</div>'}
+m.innerHTML=ch+(L.length?L.map(row).join(""):'<p class="empty">'+(tab==="today"?"На сегодня связываться ни с кем не нужно":"Клиентов пока нет. Нажмите +, чтобы добавить")+'</p>')}
+function inp(f,l,x){return '<label>'+l+'<input data-f="'+f+'" value="'+esc(cur[f])+'" '+(x||"")+'></label>'}
+function openC(id){cur=D.find(function(c){return c.id===id});if(!cur)return;var c=cur,tel=(c.phone||"").replace(/[^\d+]/g,""),tg=tgUrl(c.tg);
+$("sheet").innerHTML='<div class="bar"><button id="cl">← Назад</button><button id="del" class="dg">Удалить</button></div>'+
+inp("company","Компания")+inp("person","Контактное лицо")+
+'<div class="two">'+inp("phone","Телефон",'type="tel"')+inp("tg","Telegram",'placeholder="@имя"')+'</div>'+
+'<div class="acts">'+(tel?'<a class="btn" href="tel:'+tel+'">Позвонить</a>':'<span></span>')+(tg?'<a class="btn" href="'+tg+'" target="_blank" rel="noopener">Написать в Telegram</a>':'<span></span>')+'</div>'+
+'<div class="two">'+inp("city","Город")+inp("product","Продукт / объём")+'</div>'+
+'<div class="two"><label>Этап<select data-f="stage">'+S.map(function(s,i){return '<option value="'+i+'"'+(i===c.stage?" selected":"")+'>'+s+'</option>'}).join("")+'</select></label>'+inp("next","Связаться","type=\"date\"")+'</div>'+
+'<label>Заметка<textarea data-f="note">'+esc(c.note)+'</textarea></label>'+
+'<h3>Записать общение</h3><select id="lt"><option>Звонок</option><option>Переписка</option><option>Встреча</option><option>КП / документы</option></select>'+
+'<textarea id="lx" placeholder="О чём договорились, итог" style="margin-top:8px"></textarea>'+
+'<label>Следующий контакт<input type="date" id="ln" value="'+esc(c.next)+'"></label><button class="pri" id="ls">Записать</button>'+
+'<h3>История</h3>'+(c.log.length?c.log.map(function(e,i){return '<div class="le"><small><span>'+fmt(e.d)+' · '+esc(e.t)+'</span><a data-x="'+i+'">✕</a></small><div>'+esc(e.text)+'</div></div>'}).join(""):'<p class="hint">Записей пока нет</p>');
+$("sheet").hidden=false;$("sheet").scrollTop=0}
+function closeC(){$("sheet").hidden=true;cur=null;render()}
+$("sheet").addEventListener("input",function(e){var f=e.target.dataset.f;if(!f||!cur)return;cur[f]=f==="stage"?Number(e.target.value):e.target.value;cur.upd=Date.now();save()});
+$("sheet").addEventListener("click",function(e){var t=e.target;
+if(t.id==="cl")closeC();
+else if(t.id==="del"){if(confirm("Удалить клиента вместе с историей?")){D=D.filter(function(c){return c!==cur});save();closeC()}}
+else if(t.id==="ls"){var x=$("lx").value.trim();if(!x){$("lx").focus();return}
+cur.log.unshift({d:today(),t:$("lt").value,text:x});if($("ln").value)cur.next=$("ln").value;cur.upd=Date.now();save();openC(cur.id)}
+else if(t.dataset.x!==undefined){if(confirm("Удалить запись?")){cur.log.splice(Number(t.dataset.x),1);save();openC(cur.id)}}});
+$("main").addEventListener("click",function(e){var t=e.target,r=t.closest(".row"),c=t.closest(".chip");
+if(c){flt=c.dataset.f;render()}else if(r)openC(r.dataset.id);
+else if(t.id==="gs")pull();
+else if(t.id==="gd"){if(confirm("Отключить сервер? Данные останутся в телефоне.")){G=null;localStorage.removeItem("crm-gh");render()}}
+else if(t.id==="gc"){var gr=$("gr").value.trim(),gk=$("gt").value.trim();if(!/^[\w.-]+\/[\w.-]+$/.test(gr)||!gk){alert("Введите репозиторий в формате логин/название и токен");return}G={repo:gr,tok:gk,sha:null};saveG();render();pull(true)}
+else if(t.id==="ex"){var b=new Blob([JSON.stringify(D)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="clients-"+today()+".json";document.body.appendChild(a);a.click();a.remove()}});
+$("main").addEventListener("change",function(e){if(e.target.id!=="im")return;var f=e.target.files[0];if(!f)return;var r=new FileReader();
+r.onload=function(){try{var a=JSON.parse(r.result);if(!Array.isArray(a))throw 0;if(confirm("Заменить текущие данные ("+D.length+") данными из файла ("+a.length+")?")){D=a;save();render()}}catch(x){alert("Файл не похож на копию клиентов")}};r.readAsText(f)});
+document.querySelectorAll(".tab").forEach(function(b){b.onclick=function(){tab=b.dataset.t;flt="";$("q").value="";render()}});
+$("q").oninput=function(){if(tab==="more")tab="all";render()};
+$("add").onclick=function(){var c={id:Date.now().toString(36),company:"",person:"",phone:"",tg:"",city:"",product:"",stage:0,next:"",note:"",log:[],upd:Date.now()};D.push(c);save();openC(c.id);var i=document.querySelector("[data-f=company]");if(i)i.focus()};
+load();render();if(G){if(localStorage.getItem(K+"-dirty"))push();else pull()}
+document.addEventListener("visibilitychange",function(){if(!document.hidden&&G&&!localStorage.getItem(K+"-dirty")&&$("sheet").hidden)pull()});
+try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
+if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js").catch(function(){});
+</script></body></html>

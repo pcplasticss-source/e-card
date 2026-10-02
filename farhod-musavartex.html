@@ -23,14 +23,16 @@ h1{white-space:nowrap;font-size:clamp(18px,5.4vw,24px);line-height:1.15;font-wei
 .tag{margin:0;color:var(--ink);font-size:15px;font-weight:800}
 .body{padding:18px 18px 22px}
 .links{display:grid;grid-template-columns:1fr;gap:9px}
-.links a{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:2px;text-decoration:none;color:var(--lbl);background:var(--tile);border:1px solid var(--line);border-radius:16px;padding:13px 14px;font-weight:700;font-size:16px;overflow-wrap:anywhere;min-height:64px}
+.links a{display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:14px;text-decoration:none;color:var(--lbl);background:var(--tile);border:1px solid var(--line);border-radius:16px;padding:13px 16px;font-weight:700;font-size:16px;overflow-wrap:anywhere;min-height:64px}
+.links svg{width:22px;height:22px;stroke:var(--lbl);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .links a small{display:block;text-align:right;font-weight:500;font-size:13px;color:var(--sub)}
 .links a span{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%}
 .links a b{display:none}
 a:focus-visible,button:focus-visible{outline:3px solid #5fe0ea;outline-offset:3px}
 .qr{margin-top:20px;background:var(--tile);border:1px solid var(--line);color:var(--ink);border-radius:18px;padding:16px;text-align:center}
 .seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:transparent;border:1px solid var(--line);border-radius:999px;padding:4px;margin-bottom:14px}
-.seg button{font:inherit;font-weight:700;font-size:14px;border:0;border-radius:999px;padding:9px 6px;background:transparent;color:var(--sub);cursor:pointer}
+.seg button{display:flex;align-items:center;justify-content:center;gap:8px;font:inherit;font-weight:700;font-size:14px;border:0;border-radius:999px;padding:9px 6px;background:transparent;color:var(--sub);cursor:pointer}
+.seg svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .seg button[aria-pressed="true"]{background:var(--g);color:#fff}
 #code{background:#fff;border-radius:14px;padding:10px;width:200px;height:200px;margin:0 auto;display:flex;align-items:center;justify-content:center}
 #code svg{width:100%;height:100%;display:block}
@@ -53,16 +55,16 @@ a:focus-visible,button:focus-visible{outline:3px solid #5fe0ea;outline-offset:3p
   </header>
   <div class="body">
     <nav class="links">
-      <a href="tel:+998903431001"><span>Call<small>+998 90 343 10 01</small></span><b>→</b></a>
-      <a href="https://wa.me/998903431001" target="_blank" rel="noopener"><span>WhatsApp<small>+998 90 343 10 01</small></span><b>→</b></a>
-      <a href="https://t.me/+998903431001" target="_blank" rel="noopener"><span>Telegram<small>+998 90 343 10 01</small></span><b>→</b></a>
-      <a href="mailto:farhod@musavartex.uz"><span>E-mail<small>farhod@musavartex.uz</small></span><b>→</b></a>
-      <a href="https://www.musavartex.uz" target="_blank" rel="noopener"><span>Web site<small>www.musavartex.uz</small></span><b>→</b></a>
+      <a href="tel:+998903431001"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Call<small>+998 90 343 10 01</small></span><b>→</b></a>
+      <a href="https://wa.me/998903431001" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg><span>WhatsApp<small>+998 90 343 10 01</small></span><b>→</b></a>
+      <a href="https://t.me/+998903431001" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg><span>Telegram<small>+998 90 343 10 01</small></span><b>→</b></a>
+      <a href="mailto:farhod@musavartex.uz"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span>E-mail<small>farhod@musavartex.uz</small></span><b>→</b></a>
+      <a href="https://www.musavartex.uz" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>Web site<small>www.musavartex.uz</small></span><b>→</b></a>
     </nav>
     <section class="qr" id="qrbox" aria-label="QR-код">
       <div class="seg" role="group" aria-label="Что открыть по QR-коду">
-        <button type="button" id="tabCard" aria-pressed="true">QR</button>
-        <button type="button" id="tabContact" aria-pressed="false">Contact</button>
+        <button type="button" id="tabCard" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/></svg>QR</button>
+        <button type="button" id="tabContact" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Contact</button>
       </div>
       <div id="code"></div>
       <p class="cap" id="cap"></p>

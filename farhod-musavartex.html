@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <style>
-:root{--bg:#071717;--card:#102524;--tile:#0C2724;--ink:#EFF6F6;--sub:#9DB5B2;--g:#12908F;--line:#233937;color-scheme:dark;
+:root{--bg:#2a2d31;--card:#2a2d31;--tile:#2a2d31;--ink:#ffffff;--sub:#c4cacf;--g:#0fb2bf;--line:#41474e;--lbl:#14d4d6;color-scheme:dark;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *,*::before,*::after{box-sizing:inherit}
@@ -16,21 +16,21 @@ body{margin:0;min-height:100%;background:var(--bg);font-family:"Manrope",system-
 .card{width:100%;max-width:420px;background:var(--card);color:var(--ink);border-radius:24px;overflow:hidden;border:1px solid var(--line)}
 .top{padding:22px 18px 4px}
 .id{display:flex;align-items:center;gap:14px;margin-top:0}
-.photo{flex:none;width:clamp(88px,27vw,112px);aspect-ratio:1/1;object-fit:cover;border-radius:24px;border:2px solid #1d4a49;display:block}
+.photo{flex:none;width:clamp(88px,27vw,112px);aspect-ratio:1/1;object-fit:cover;border-radius:24px;border:2px solid var(--g);display:block}
 .who{min-width:0}
 h1{white-space:nowrap;font-size:clamp(18px,5.4vw,24px);line-height:1.15;font-weight:800;letter-spacing:-.02em;margin:0 0 5px;color:var(--ink)}
-.role{margin:0 0 3px;color:var(--sub);font-size:15px;font-weight:700}
+.role{margin:0 0 3px;color:var(--g);font-size:15px;font-weight:700}
 .tag{margin:0;color:var(--ink);font-size:15px;font-weight:800}
 .body{padding:18px 18px 22px}
 .links{display:grid;grid-template-columns:1fr;gap:9px}
-.links a{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:2px;text-decoration:none;color:var(--ink);background:var(--tile);border:1px solid var(--line);border-radius:16px;padding:13px 14px;font-weight:700;font-size:16px;overflow-wrap:anywhere;min-height:64px}
+.links a{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:2px;text-decoration:none;color:var(--lbl);background:var(--tile);border:1px solid var(--line);border-radius:16px;padding:13px 14px;font-weight:700;font-size:16px;overflow-wrap:anywhere;min-height:64px}
 .links a small{display:block;text-align:right;font-weight:500;font-size:13px;color:var(--sub)}
 .links a span{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%}
 .links a b{display:none}
-a:focus-visible,button:focus-visible{outline:3px solid #7ED6D4;outline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid #5fe0ea;outline-offset:3px}
 .qr{margin-top:20px;background:var(--tile);border:1px solid var(--line);color:var(--ink);border-radius:18px;padding:16px;text-align:center}
-.seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:4px;margin-bottom:14px}
-.seg button{font:inherit;font-weight:700;font-size:14px;border:0;border-radius:10px;padding:9px 6px;background:transparent;color:var(--sub);cursor:pointer}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:transparent;border:1px solid var(--line);border-radius:999px;padding:4px;margin-bottom:14px}
+.seg button{font:inherit;font-weight:700;font-size:14px;border:0;border-radius:999px;padding:9px 6px;background:transparent;color:var(--sub);cursor:pointer}
 .seg button[aria-pressed="true"]{background:var(--g);color:#fff}
 #code{background:#fff;border-radius:14px;padding:10px;width:200px;height:200px;margin:0 auto;display:flex;align-items:center;justify-content:center}
 #code svg{width:100%;height:100%;display:block}
@@ -81,7 +81,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #7ED6D4;outline-offset:3p
     try{
       var qr=qrcode(0,"M");qr.addData(text);qr.make();
       code.innerHTML=qr.createSvgTag({cellSize:4,margin:0,scalable:true});
-      var svg=code.querySelector("svg");if(svg){svg.setAttribute("fill","#071717");svg.querySelectorAll("rect").forEach(function(r){if(r.getAttribute("fill")==="#ffffff"||r.getAttribute("fill")==="white")r.setAttribute("fill","#fff")});}
+      var svg=code.querySelector("svg");if(svg){svg.setAttribute("fill","#15181b");svg.querySelectorAll("rect").forEach(function(r){if(r.getAttribute("fill")==="#ffffff"||r.getAttribute("fill")==="white")r.setAttribute("fill","#fff")});}
       return true;
     }catch(e){code.textContent="";return false;}
   }

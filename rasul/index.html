@@ -148,6 +148,32 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--tq);outline-offset:
 .cell .tile,.cell .pin{width:clamp(46px,calc(var(--u)*7.4),68px);height:clamp(46px,calc(var(--u)*7.4),68px)}
 .cell .tile svg{width:clamp(24px,calc(var(--u)*4.2),38px);height:clamp(24px,calc(var(--u)*4.2),38px)}
 .cell .pin svg{width:clamp(24px,calc(var(--u)*4.2),36px);height:clamp(24px,calc(var(--u)*4.2),36px)}
+
+.wrap{--g:clamp(8px,1.4vh,12px)}
+.grid,.acts{gap:var(--g);grid-template-columns:repeat(3,minmax(0,1fr));width:100%}
+.btn,.btn.main{border-radius:clamp(16px,3vh,24px);min-width:0}
+
+.wrap{gap:var(--g)}
+.grid{align-content:stretch;grid-auto-rows:minmax(0,1fr)}
+.cell{aspect-ratio:auto}
+
+/* proportional sizing + larger photo */
+.wrap{justify-content:flex-start}
+.hero{flex:1 1 auto;min-height:0;align-items:center;gap:clamp(12px,3.6vw,18px)}
+.hero img{width:clamp(108px,calc(var(--u)*19.5),172px);height:clamp(108px,calc(var(--u)*19.5),172px);border-radius:clamp(26px,calc(var(--u)*4.2),38px);border-width:2.5px}
+h1{font-size:clamp(22px,6.6vw,30px)}
+.role{font-size:clamp(15px,4.2vw,18px)}
+.co{font-size:clamp(16px,4.4vw,19px)}
+.grid{flex:none;align-content:start;grid-auto-rows:auto}
+.cell{aspect-ratio:1/1.1;min-height:0}
+.acts{flex:none;grid-auto-rows:auto}
+.btn,.btn.main{aspect-ratio:1/.8;min-height:0;padding:6px 4px}
+
+/* all 12 tabs identical size */
+.cell,.btn,.btn.main{aspect-ratio:1/1;width:100%;height:auto;min-height:0}
+.btn,.btn.main{padding:4px;gap:clamp(6px,1.2vh,10px)}
+.btn svg,.btn.main svg{width:clamp(26px,calc(var(--u)*4.2),38px);height:clamp(26px,calc(var(--u)*4.2),38px)}
+.btn,.btn.main{font-size:clamp(11.5px,calc(var(--u)*1.6),14px)}
 </style>
 <script>
 (function(){var d=document.documentElement;function fit(){var h=window.innerHeight;if(h>200){d.style.setProperty("--H",h+"px");d.style.setProperty("--u",(h/100)+"px")}}

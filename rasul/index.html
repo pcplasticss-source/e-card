@@ -164,7 +164,6 @@ fit();["resize","orientationchange","pageshow","load","visibilitychange","focus"
 
 <dialog id="qd">
   <button class="x" id="qx" type="button" aria-label="Закрыть">×</button>
-  <div class="tabs" role="group"><button data-q="url" aria-pressed="true">Визитка</button><button data-q="vc" aria-pressed="false">Контакт</button></div>
   <div><div id="qr" aria-label="QR"></div></div>
   <p class="hint">Наведите камеру телефона на код</p>
 </dialog>
@@ -173,11 +172,9 @@ fit();["resize","orientationchange","pageshow","load","visibilitychange","focus"
 <script>
 var URL_="https://pcplasticss-source.github.io/e-card/rasul/";
 var VC="BEGIN:VCARD\nVERSION:3.0\nN:Bulatov;Rasul;;;\nFN:Rasul Bulatov\nORG:ООО Hayat Plastics\nTITLE:Финансовый директор\nTEL;TYPE=CELL:+998905097557\nTEL;TYPE=CELL:+77079740156\nEMAIL:rasul@hayatplastics.uz\nURL:https://hayatplastics.uz\nEND:VCARD";
-function draw(m){var box=document.getElementById("qr");try{var q=qrcode(0,"M");q.addData(m==="vc"?VC:URL_);q.make();box.innerHTML=q.createSvgTag(4,0)}catch(e){box.textContent="QR"}
-document.querySelectorAll(".tabs button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.q===m)})}
-document.querySelectorAll(".tabs button").forEach(function(b){b.onclick=function(){draw(b.dataset.q)}});
+function draw(m){var box=document.getElementById("qr");try{var q=qrcode(0,"M");q.addData(m==="vc"?VC:URL_);q.make();box.innerHTML=q.createSvgTag(4,0)}catch(e){box.textContent="QR"}}
 var qd=document.getElementById("qd");
-document.getElementById("qbtn").onclick=function(){draw("vc");qd.showModal?qd.showModal():qd.setAttribute("open","")};
+document.getElementById("qbtn").onclick=function(){draw("url");qd.showModal?qd.showModal():qd.setAttribute("open","")};
 document.getElementById("qx").onclick=function(){qd.close()};
 qd.addEventListener("click",function(e){if(e.target===qd)qd.close()});
 document.getElementById("save").onclick=function(){try{var u=URL.createObjectURL(new Blob([VC],{type:"text/vcard"})),a=document.createElement("a");a.href=u;a.download="Rasul-Bulatov.vcf";document.body.appendChild(a);a.click();a.remove()}catch(e){location.href="data:text/vcard;charset=utf-8,"+encodeURIComponent(VC)}};

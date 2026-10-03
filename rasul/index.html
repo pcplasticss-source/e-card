@@ -174,6 +174,75 @@ h1{font-size:clamp(22px,6.6vw,30px)}
 .btn,.btn.main{padding:4px;gap:clamp(6px,1.2vh,10px)}
 .btn svg,.btn.main svg{width:clamp(26px,calc(var(--u)*4.2),38px);height:clamp(26px,calc(var(--u)*4.2),38px)}
 .btn,.btn.main{font-size:clamp(11.5px,calc(var(--u)*1.6),14px)}
+
+/* ===== v2: 12 identical tabs, each with its own animation ===== */
+.t8{background:linear-gradient(135deg,#4aa3ff,#2a5bff 55%,#6a3dff)}
+.t9{background:linear-gradient(135deg,#ffb23f,#ff3d6e 55%,#a23dd6)}
+.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--g);width:100%;flex:none;align-content:start;grid-auto-rows:auto}
+.grid .cell:nth-child(10){animation-delay:.9s}.grid .cell:nth-child(11){animation-delay:1s}.grid .cell:nth-child(12){animation-delay:1.1s}
+button.cell{font-family:inherit;color:#fff;cursor:pointer;margin:0;-webkit-appearance:none;appearance:none}
+.cell{aspect-ratio:1/1;width:100%;height:auto}
+.wrap .grid .cell .tile{animation:none;filter:none;transform:none}
+.wrap .grid .cell .tile svg{animation:none}
+.wrap .grid .cell .tile::after{animation:none;opacity:0}
+.wrap .grid .cell .tile{--ring:rgba(42,255,239,.7)}
+
+/* 1 Call UZ: ringing phone (shared with Call KZ) */
+.wrap .grid .cell.a1 .tile svg{animation:a-ring 2.6s ease-in-out infinite}
+@keyframes a-ring{0%,50%,100%{transform:rotate(0)}6%{transform:rotate(-18deg)}12%{transform:rotate(16deg)}18%{transform:rotate(-14deg)}24%{transform:rotate(12deg)}30%{transform:rotate(-8deg)}36%{transform:rotate(5deg)}42%{transform:rotate(0)}}
+/* 2 Call KZ: same ringing phone as Call UZ */
+.wrap .grid .cell.a2 .tile svg{animation:a-ring 2.6s ease-in-out infinite}
+/* 3 WhatsApp: jumping bubble */
+.wrap .grid .cell.a3 .tile{animation:a-jump 2.4s cubic-bezier(.3,0,.4,1) infinite}
+@keyframes a-jump{0%,60%,100%{transform:translateY(0) scale(1,1)}10%{transform:translateY(0) scale(1.1,.88)}30%{transform:translateY(-9px) scale(.94,1.08)}50%{transform:translateY(0) scale(1.08,.92)}55%{transform:translateY(0) scale(.98,1.03)}}
+/* 4 WeChat: 3D flip */
+.wrap .grid .cell.a4 .tile{animation:a-flip 3.6s ease-in-out infinite}
+@keyframes a-flip{0%,55%{transform:perspective(260px) rotateY(0)}85%,100%{transform:perspective(260px) rotateY(360deg)}}
+/* 5 Telegram: paper plane flies off and returns */
+.wrap .grid .cell.a5 .tile svg{animation:a-plane 3s ease-in infinite}
+@keyframes a-plane{0%,40%{transform:translate(0,0);opacity:1}62%{transform:translate(30px,-30px);opacity:0}63%{transform:translate(-30px,30px);opacity:0}85%,100%{transform:translate(0,0);opacity:1}}
+/* 6 Instagram: colour cycle */
+.wrap .grid .cell.a6 .tile{animation:a-hue 5s linear infinite}
+@keyframes a-hue{to{filter:hue-rotate(360deg)}}
+/* 7 E-mail: letter drops in */
+.wrap .grid .cell.a7 .tile svg{animation:a-drop 3.2s cubic-bezier(.3,1.4,.5,1) infinite}
+@keyframes a-drop{0%{transform:translateY(-140%);opacity:0}18%{transform:translateY(0);opacity:1}28%{transform:translateY(-4px)}36%,92%{transform:translateY(0);opacity:1}100%{transform:translateY(140%);opacity:0}}
+/* 8 Web site: spinning globe */
+.wrap .grid .cell.a8 .tile svg{animation:a-spin 4.5s ease-in-out infinite}
+@keyframes a-spin{0%,15%{transform:rotate(0)}70%,100%{transform:rotate(360deg)}}
+/* 9 Location: original pin animation (glow + two ripple rings + hopping pin) */
+.wrap .grid .cell.a9 .tile{overflow:visible;animation:a-pinglow 2.4s ease-in-out infinite}
+.wrap .grid .cell.a9 .tile::before,.wrap .grid .cell.a9 .tile::after{content:"";display:block;position:absolute;inset:-1px;width:auto;height:auto;transform:none;background:none;box-shadow:none;border:2px solid rgba(42,255,239,.75);border-radius:inherit;opacity:1;pointer-events:none;animation:a-ripple 2.4s ease-out infinite}
+.wrap .grid .cell.a9 .tile::after{animation-delay:1.2s}
+.wrap .grid .cell.a9 .tile svg{filter:drop-shadow(0 0 4px rgba(42,255,239,.8));animation:a-hop 2.4s ease-in-out infinite}
+@keyframes a-ripple{0%{transform:scale(1);opacity:.85}100%{transform:scale(1.6);opacity:0}}
+@keyframes a-hop{0%,55%,100%{transform:translateY(0)}20%{transform:translateY(-5px)}35%{transform:translateY(0)}45%{transform:translateY(-2px)}}
+@keyframes a-pinglow{0%,100%{box-shadow:0 4px 12px rgba(0,0,0,.35),0 0 8px rgba(42,255,239,.35)}50%{box-shadow:0 4px 12px rgba(0,0,0,.35),0 0 16px rgba(42,255,239,.8)}}
+/* 10 QR: scanning line */
+.wrap .grid .cell.a10 .tile::after{opacity:1;left:0;width:100%;height:3px;top:0;transform:none;background:linear-gradient(90deg,transparent,#fff,transparent);box-shadow:0 0 8px 2px rgba(255,255,255,.9);animation:a-scan 2.2s ease-in-out infinite}
+@keyframes a-scan{0%{top:-5%}50%{top:100%}100%{top:-5%}}
+/* 11 Save: heartbeat */
+.wrap .grid .cell.a11 .tile svg{animation:a-beat 1.8s ease-in-out infinite}
+@keyframes a-beat{0%,40%,100%{transform:scale(1)}10%{transform:scale(1.28)}20%{transform:scale(1)}30%{transform:scale(1.18)}}
+/* 12 Share: swinging nodes + warm glow */
+.wrap .grid .cell.a12 .tile{animation:a-glow 2.8s ease-in-out infinite}
+.wrap .grid .cell.a12 .tile svg{animation:a-swing 2.8s ease-in-out infinite}
+@keyframes a-glow{0%,100%{box-shadow:0 4px 12px rgba(0,0,0,.35),0 0 0 rgba(255,80,130,0)}50%{box-shadow:0 4px 12px rgba(0,0,0,.35),0 0 18px rgba(255,80,130,.85)}}
+@keyframes a-swing{0%,100%{transform:rotate(-22deg) scale(1)}50%{transform:rotate(22deg) scale(1.12)}}
+@media (prefers-reduced-motion:reduce){.wrap .grid .cell.a9 .tile::before,.wrap .grid .cell.a9 .tile::after{display:none!important}.wrap .grid .cell .tile,.wrap .grid .cell .tile svg,.wrap .grid .cell .tile::after{animation:none!important}}
+/* raise tabs slightly */
+.wrap .grid{margin-bottom:clamp(18px,3.4vh,34px)}
+/* photo animation */
+.wrap .hero img{animation:photo-in .8s cubic-bezier(.2,.9,.3,1.2) both,photo-float 4.2s ease-in-out .8s infinite,photo-glow 3s ease-in-out infinite}
+@keyframes photo-in{from{opacity:0;transform:scale(.75) rotate(-6deg)}to{opacity:1;transform:none}}
+@keyframes photo-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes photo-glow{0%,100%{box-shadow:0 0 14px rgba(42,255,239,.35);border-color:#3fd6d8}50%{box-shadow:0 0 14px rgba(42,255,239,.6),0 0 30px rgba(42,255,239,.55);border-color:#9ffff6}}
+@media (prefers-reduced-motion:reduce){.wrap .hero img{animation:none}}
+/* name animation */
+.wrap .hero h1{background:linear-gradient(100deg,#fff 40%,#7dfff4 50%,#fff 60%) 100% 0/250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:name-in .8s ease-out .15s both,name-shine 4.5s linear 1.2s infinite}
+@keyframes name-in{from{opacity:0;transform:translateX(-16px)}to{opacity:1;transform:none}}
+@keyframes name-shine{0%{background-position:100% 0}55%,100%{background-position:0 0}}
+@media (prefers-reduced-motion:reduce){.wrap .hero h1{animation:none;background:none;-webkit-text-fill-color:#fff;color:#fff}}
 </style>
 <script>
 (function(){var d=document.documentElement;function fit(){var h=window.innerHeight;if(h>200){d.style.setProperty("--H",h+"px");d.style.setProperty("--u",(h/100)+"px")}}
@@ -194,23 +263,20 @@ fit();["resize","orientationchange","pageshow","load","visibilitychange","focus"
   </section>
 
   <nav class="grid" aria-label="Контакты">
-    <a class="cell" href="tel:+998905097557"><span class="tile t7"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><b>Call UZ</b></a>
-    <a class="cell" href="tel:+77079740156"><span class="tile t2"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><b>Call KZ</b></a>
-    <a class="cell" href="https://wa.me/77079740156" target="_blank" rel="noopener"><span class="tile t3"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path transform="translate(7 7) scale(.42)" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="#fff" stroke-width="3"/></svg></span><b>WhatsApp</b></a>
-    <a class="cell" href="weixin://" id="wc-link"><span class="tile t6"><svg viewBox="0 0 24 24" style="stroke:none"><path fill="#fff" d="M9 3C5.1 3 2 5.5 2 8.6c0 1.8 1 3.3 2.6 4.3L4 15.5l3-1.5c.6.2 1.3.2 2 .2 3.9 0 7-2.5 7-5.6S12.9 3 9 3Z"/><path fill="#fff" stroke="#07c160" stroke-width="1" d="M22 15.3c0-2.3-2.1-4.2-4.8-4.2s-4.8 1.9-4.8 4.2 2.1 4.2 4.8 4.2c.6 0 1.2-.1 1.7-.2l2 1-.5-1.9c1-.8 1.6-1.9 1.6-3.1Z"/><circle cx="6.6" cy="7.4" r="1" fill="#07c160"/><circle cx="11.4" cy="7.4" r="1" fill="#07c160"/><circle cx="15.6" cy="14.6" r=".8" fill="#07c160"/><circle cx="18.8" cy="14.6" r=".8" fill="#07c160"/></svg></span><b>WeChat</b></a>
-    <a class="cell" href="tg://resolve?domain=hayatplastics" id="tg-link" data-web="https://t.me/hayatplastics"><span class="tile t4"><svg viewBox="0 0 24 24" style="stroke:none"><path fill="#fff" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg></span><b>Telegram</b></a>
-    <a class="cell" href="https://www.instagram.com/hayat_plastics?stkn=OG9mNTM0aXJoMXRj" target="_blank" rel="noopener"><span class="tile t5"><svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></span><b>Instagram</b></a>
-    <a class="cell" href="mailto:rasul@hayatplastics.uz"><span class="tile t2"><svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><b>E-mail</b></a>
-    <a class="cell" href="https://hayatplastics.uz" target="_blank" rel="noopener"><span class="tile t2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><b>Web site</b></a>
-    <a class="cell" href="https://yandex.ru/maps/?pt=69.315427,41.221520&z=16&l=map" target="_blank" rel="noopener" aria-label="Location: Тошкент шахар, Бектемир тумани, Олтин топган 43"><span class="pin"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><b>Location</b></a>
+    <a class="cell a1" href="tel:+998905097557"><span class="tile t7"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><b>Call UZ</b></a>
+    <a class="cell a2" href="tel:+77079740156"><span class="tile t2"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><b>Call KZ</b></a>
+    <a class="cell a3" href="https://wa.me/77079740156" target="_blank" rel="noopener"><span class="tile t3"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path transform="translate(7 7) scale(.42)" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="#fff" stroke-width="3"/></svg></span><b>WhatsApp</b></a>
+    <a class="cell a4" href="weixin://" id="wc-link"><span class="tile t6"><svg viewBox="0 0 24 24" style="stroke:none"><path fill="#fff" d="M9 3C5.1 3 2 5.5 2 8.6c0 1.8 1 3.3 2.6 4.3L4 15.5l3-1.5c.6.2 1.3.2 2 .2 3.9 0 7-2.5 7-5.6S12.9 3 9 3Z"/><path fill="#fff" stroke="#07c160" stroke-width="1" d="M22 15.3c0-2.3-2.1-4.2-4.8-4.2s-4.8 1.9-4.8 4.2 2.1 4.2 4.8 4.2c.6 0 1.2-.1 1.7-.2l2 1-.5-1.9c1-.8 1.6-1.9 1.6-3.1Z"/><circle cx="6.6" cy="7.4" r="1" fill="#07c160"/><circle cx="11.4" cy="7.4" r="1" fill="#07c160"/><circle cx="15.6" cy="14.6" r=".8" fill="#07c160"/><circle cx="18.8" cy="14.6" r=".8" fill="#07c160"/></svg></span><b>WeChat</b></a>
+    <a class="cell a5" href="tg://resolve?domain=hayatplastics" id="tg-link" data-web="https://t.me/hayatplastics"><span class="tile t4"><svg viewBox="0 0 24 24" style="stroke:none"><path fill="#fff" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg></span><b>Telegram</b></a>
+    <a class="cell a6" href="https://www.instagram.com/hayat_plastics?stkn=OG9mNTM0aXJoMXRj" target="_blank" rel="noopener"><span class="tile t5"><svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></span><b>Instagram</b></a>
+    <a class="cell a7" href="mailto:rasul@hayatplastics.uz"><span class="tile t2"><svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><b>E-mail</b></a>
+    <a class="cell a8" href="https://hayatplastics.uz" target="_blank" rel="noopener"><span class="tile t2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><b>Web site</b></a>
+    <a class="cell a9" href="https://yandex.ru/maps/?pt=69.315427,41.221520&z=16&l=map" target="_blank" rel="noopener" aria-label="Location: Тошкент шахар, Бектемир тумани, Олтин топган 43"><span class="tile t1"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><b>Location</b></a>
+  
+    <button class="cell a10" id="qbtn" type="button" aria-label="QR Contact"><span class="tile t1"><svg viewBox="0 0 24 24"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3M21 21v.01M12 7v3a2 2 0 0 1-2 2H7M3 12h.01M12 3h.01M12 16v.01M16 12h1M21 12v.01M12 21v-1"/></svg></span><b>QR Contact</b></button>
+    <button class="cell a11" id="bsave" type="button" aria-label="Сохранить в контакты"><span class="tile t8"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg></span><b>Сохранить</b></button>
+    <button class="cell a12" id="bshare" type="button" aria-label="Поделиться визиткой"><span class="tile t9"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></span><b>Поделиться</b></button>
   </nav>
-
-
-  <div class="acts">
-    <button class="btn main" id="qbtn" type="button"><svg viewBox="0 0 24 24"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3M21 21v.01M12 7v3a2 2 0 0 1-2 2H7M3 12h.01M12 3h.01M12 16v.01M16 12h1M21 12v.01M12 21v-1"/></svg><span><b>QR Contact</b></span></button>
-    <button class="btn" id="save" type="button"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>Сохранить в контакты</button>
-    <button class="btn" id="share" type="button"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>Поделиться визиткой</button>
-  </div>
 </main>
 
 <dialog id="qd">
@@ -228,8 +294,8 @@ var qd=document.getElementById("qd");
 document.getElementById("qbtn").onclick=function(){draw("url");qd.showModal?qd.showModal():qd.setAttribute("open","")};
 document.getElementById("qx").onclick=function(){qd.close()};
 qd.addEventListener("click",function(e){if(e.target===qd)qd.close()});
-document.getElementById("save").onclick=function(){try{var u=URL.createObjectURL(new Blob([VC],{type:"text/vcard"})),a=document.createElement("a");a.href=u;a.download="Rasul-Bulatov.vcf";document.body.appendChild(a);a.click();a.remove()}catch(e){location.href="data:text/vcard;charset=utf-8,"+encodeURIComponent(VC)}};
-document.getElementById("share").onclick=function(){var d={title:"Rasul Bulatov — ООО Hayat Plastics",url:URL_};
+document.getElementById("bsave").onclick=function(){try{var u=URL.createObjectURL(new Blob([VC],{type:"text/vcard"})),a=document.createElement("a");a.href=u;a.download="Rasul-Bulatov.vcf";document.body.appendChild(a);a.click();a.remove()}catch(e){location.href="data:text/vcard;charset=utf-8,"+encodeURIComponent(VC)}};
+document.getElementById("bshare").onclick=function(){var d={title:"Rasul Bulatov — ООО Hayat Plastics",url:URL_};
 if(navigator.share){navigator.share(d).catch(function(){})}else if(navigator.clipboard){navigator.clipboard.writeText(URL_).catch(function(){})}};
 if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(function(){})}
 (function(){var a=document.getElementById("tg-link");a.addEventListener("click",function(e){e.preventDefault();var t=setTimeout(function(){if(!document.hidden)location.href=a.dataset.web},1500);document.addEventListener("visibilitychange",function(){if(document.hidden)clearTimeout(t)});location.href=a.getAttribute("href")});

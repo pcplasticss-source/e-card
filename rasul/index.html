@@ -17,7 +17,7 @@
 :root{--tq:#2affef;--line:rgba(120,200,210,.22);--muted:#a9bcc2;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;margin:0}
 html{scroll-padding-top:env(safe-area-inset-top,0px);background:#071318;-webkit-text-size-adjust:100%}
-body{color:#fff;font:500 16px/1.4 Manrope,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;min-height:100vh;background:radial-gradient(120% 60% at 80% 0%,#12353d 0%,transparent 60%),linear-gradient(180deg,#0a1d24 0%,#071318 45%,#050d11 100%)}
+body{color:#fff;font:500 16px/1.4 Manrope,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;min-height:0;background:radial-gradient(120% 60% at 80% 0%,#12353d 0%,transparent 60%),linear-gradient(180deg,#0a1d24 0%,#071318 45%,#050d11 100%)}
 .wrap{max-width:440px;margin:0 auto;padding:18px 14px 34px}
 .hero{position:relative;display:flex;gap:16px;align-items:center;margin-bottom:18px}
 .hero img{width:104px;height:104px;border-radius:26px;object-fit:cover;flex:none;border:2px solid #3fd6d8;box-shadow:0 0 18px rgba(42,255,239,.35)}
@@ -101,7 +101,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--tq);outline-offset:
 .t6{background:linear-gradient(135deg,#2bd870,#07c160 55%,#05964a)}
 .t4{background:linear-gradient(135deg,#46b8f2,#229ed9 60%,#1a7fb8)}
 .t5{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
-.wrap{padding:10px 14px;height:100vh;height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));min-height:600px;max-height:940px;display:flex;flex-direction:column;gap:clamp(5px,calc(var(--u)*1),12px)}
+.wrap{padding:10px 14px;height:100vh;height:calc(var(--H,100dvh) - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));min-height:600px;max-height:940px;display:flex;flex-direction:column;gap:clamp(5px,calc(var(--u)*1),12px)}
 .hero{flex:none;margin-bottom:0}
 .hero img{width:clamp(72px,calc(var(--u)*12),108px);height:clamp(72px,calc(var(--u)*12),108px)}
 .list{flex:8 1 0;min-height:0;grid-auto-rows:1fr;gap:clamp(4px,.8vh,8px)}
@@ -124,6 +124,11 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--tq);outline-offset:
 @supports (height:1dvh){:root{--u:1dvh}}
 .list{grid-auto-rows:minmax(0,1fr)}
 </style>
+<script>
+(function(){var d=document.documentElement;function fit(){var h=window.innerHeight;if(h>200){d.style.setProperty("--H",h+"px");d.style.setProperty("--u",(h/100)+"px")}}
+fit();["resize","orientationchange","pageshow","load","visibilitychange","focus"].forEach(function(e){window.addEventListener(e,fit)});
+[100,300,700,1500].forEach(function(t){setTimeout(fit,t)})})();
+</script>
 </head>
 <body>
 <main class="wrap">

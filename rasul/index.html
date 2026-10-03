@@ -4,123 +4,161 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rasul Bulatov — ООО Hayat Plastics</title>
-<meta name="theme-color" content="#2a2d31">
+<meta name="theme-color" content="#071318">
+<meta name="color-scheme" content="dark only">
+<meta name="supported-color-schemes" content="dark">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Unbounded:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap">
 <style>
-:root{--bg:#2a2d31;--panel:#2a2d31;--line:#41474e;--text:#ffffff;--muted:#c4cacf;--accent:#12908f;--turq:#00e5d0;--shine:#2affef;--accent-ink:#ffffff;--plate:#ffffff;color-scheme:dark;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--tq:#2affef;--line:rgba(120,200,210,.22);--muted:#a9bcc2;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;margin:0}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{background:var(--bg);color:var(--text);font:400 16px/1.5 Manrope,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;min-height:100%}
-.wrap{max-width:440px;margin:0 auto;padding:20px 18px 40px}
-.top{display:flex;justify-content:flex-end;align-items:center;margin-bottom:22px}
-.plate{background:var(--plate);border-radius:14px;padding:6px 14px;display:inline-flex}
-.plate img{height:40px;width:auto;display:block}
-.lang{display:flex;gap:4px}
-.lang button{background:none;border:1px solid var(--line);color:var(--muted);font:600 13px Manrope,sans-serif;padding:6px 10px;border-radius:999px;cursor:pointer}
-.lang button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.hero{display:flex;gap:16px;align-items:center;margin-bottom:24px}
-.hero img{width:104px;height:104px;border-radius:28px;object-fit:cover;flex:none;border:2px solid var(--line)}
-h1{font:700 26px/1.1 Unbounded,Manrope,system-ui,sans-serif;letter-spacing:-.01em}
-.role{color:var(--muted);margin-top:6px;font-weight:600}
-.co{margin-top:2px;font-weight:700;color:var(--shine);text-shadow:0 0 4px rgba(42,255,239,.85),0 0 12px rgba(42,255,239,.5);animation:glowtxt 3s ease-in-out infinite}
-.call{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:12px}
-.call a{background:var(--bg);border:1px solid var(--line);color:var(--text);text-decoration:none;border-radius:16px;padding:15px 16px;font-weight:600;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;gap:14px}
-.call svg{width:22px;height:22px;stroke:var(--shine);filter:drop-shadow(0 0 3px rgba(42,255,239,.85)) drop-shadow(0 0 8px rgba(42,255,239,.45));animation:shine 3s ease-in-out infinite;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.call small{margin-left:auto;color:var(--muted);font-weight:400;font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
-.list{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden}
-.list a{display:flex;align-items:center;gap:14px;padding:15px 16px;color:var(--text);text-decoration:none;font-weight:600;border-top:1px solid var(--line)}
-.list a:first-child{border-top:0}
-.list a:hover{background:color-mix(in srgb,var(--accent) 12%,transparent)}
-.list svg{width:22px;height:22px;stroke:var(--shine);filter:drop-shadow(0 0 3px rgba(42,255,239,.85)) drop-shadow(0 0 8px rgba(42,255,239,.45));animation:shine 3s ease-in-out infinite;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.list span{margin-left:auto;color:var(--muted);font-weight:400;font-size:13px}
-.qr{margin-top:22px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:18px;text-align:center}
-.tabs{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;margin-bottom:14px}
-.tabs button{background:none;border:0;color:var(--muted);font:600 14px Manrope,sans-serif;padding:7px 12px;border-radius:999px;cursor:pointer}
-.tabs button[aria-pressed="true"]{background:linear-gradient(135deg,#7dfff4 0%,#2affef 45%,#00d9c5 100%);color:#04312d;box-shadow:0 0 8px rgba(42,255,239,.8),0 0 18px rgba(42,255,239,.45),inset 0 1px 0 rgba(255,255,255,.6);animation:glowbox 3s ease-in-out infinite}
-#qr{background:#fff;padding:12px;border-radius:16px;display:inline-block;line-height:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px);background:#071318;-webkit-text-size-adjust:100%}
+body{color:#fff;font:500 16px/1.4 Manrope,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;min-height:100vh;background:radial-gradient(120% 60% at 80% 0%,#12353d 0%,transparent 60%),linear-gradient(180deg,#0a1d24 0%,#071318 45%,#050d11 100%)}
+.wrap{max-width:440px;margin:0 auto;padding:18px 14px 34px}
+.hero{position:relative;display:flex;gap:16px;align-items:center;margin-bottom:18px}
+.hero img{width:104px;height:104px;border-radius:26px;object-fit:cover;flex:none;border:2px solid #3fd6d8;box-shadow:0 0 18px rgba(42,255,239,.35)}
+.who{min-width:0}
+h1{font:800 clamp(21px,6.4vw,27px)/1.1 Manrope,sans-serif;letter-spacing:-.01em}
+.role{color:#d5e2e5;margin-top:3px;font-size:16px}
+.bar{width:64px;height:2px;margin:9px 0 7px;background:linear-gradient(90deg,var(--tq),transparent)}
+.co{font-weight:800;font-size:17px;color:var(--tq);text-shadow:0 0 8px rgba(42,255,239,.6)}
+.list{display:grid;gap:8px}
+.row{display:flex;align-items:center;gap:13px;padding:10px 14px 10px 10px;min-height:62px;color:#fff;text-decoration:none;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.07),rgba(255,255,255,.02));box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
+.tile{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;flex:none;box-shadow:0 4px 12px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.35)}
+.tile svg{width:25px;height:25px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.t1{background:linear-gradient(135deg,#2de0cf,#0a9c9a)}.t2{background:linear-gradient(135deg,#3b8cff,#1550d6)}.t3{background:linear-gradient(135deg,#33d96a,#0f9f3d)}.t4{background:linear-gradient(135deg,#3fc3f5,#1792d6)}.t5{background:linear-gradient(45deg,#ffb23f,#ff3d6e 50%,#a23dd6)}
+.tx{flex:1;min-width:0}.tx b{display:block;font-weight:700;font-size:17px}.tx i{display:block;font-style:normal;font-size:13px;color:var(--muted)}
+.val{font-size:14px;color:#e8f1f3;text-align:right;overflow-wrap:anywhere;max-width:46%;font-variant-numeric:tabular-nums}
+.ch{width:9px;height:9px;border-top:2px solid var(--muted);border-right:2px solid var(--muted);transform:rotate(45deg);flex:none;margin-left:-2px}
+.loc{margin-top:10px;display:flex;align-items:center;gap:13px;padding:16px;min-height:104px;border-radius:18px;border:1px solid var(--line);color:#fff;text-decoration:none;background:linear-gradient(100deg,rgba(14,40,48,.95) 40%,rgba(60,120,135,.55)),linear-gradient(135deg,#16343c,#2a5560)}
+.loc .pin{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);background:rgba(42,255,239,.08);flex:none}
+.loc .pin svg{width:24px;height:24px;stroke:var(--tq);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.loc b{font-size:19px;font-weight:700}.loc i{display:block;font-style:normal;font-size:14px;color:#cfdde0;margin-top:2px}
+.acts{display:grid;grid-template-columns:1.9fr 1fr 1fr;gap:8px;margin-top:12px}
+.btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:78px;padding:8px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:#fff;font:600 12.5px/1.2 Manrope,sans-serif;text-align:center;cursor:pointer;text-decoration:none}
+.btn svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.btn.main{flex-direction:row;gap:14px;justify-content:flex-start;padding:8px 14px;text-align:left;font-size:13px;font-weight:500;border:1px solid #5ff3e8;background:linear-gradient(135deg,#1bd6cf,#08868c);box-shadow:0 0 14px rgba(42,255,239,.55),inset 0 1px 0 rgba(255,255,255,.4);animation:glowbox 3s ease-in-out infinite}
+.btn.main svg{width:34px;height:34px;flex:none}.btn.main b{display:block;font-size:17px;font-weight:700}
+dialog{border:1px solid var(--line);border-radius:22px;background:#0b1518;color:#fff;padding:18px;width:min(92vw,340px);text-align:center;margin:auto}
+dialog::backdrop{background:rgba(0,0,0,.65)}
+.x{position:absolute;top:8px;right:12px;background:none;border:0;color:var(--muted);font-size:26px;cursor:pointer}
+.tabs{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;margin:6px 0 14px}
+.tabs button{background:none;border:0;color:var(--muted);font:600 14px Manrope,sans-serif;padding:7px 14px;border-radius:999px;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:linear-gradient(135deg,#7dfff4,#2affef 45%,#00d9c5);color:#04312d;box-shadow:0 0 8px rgba(42,255,239,.8),inset 0 1px 0 rgba(255,255,255,.6)}
+#qr{background:#0b1214;padding:16px;border-radius:16px;display:inline-block;line-height:0;border:1px solid rgba(42,255,239,.7);animation:qrglow 3s ease-in-out infinite}
 #qr svg{width:200px;height:200px}
+#qr svg>rect:first-child{fill:transparent}#qr svg path,#qr svg rect:not(:first-child){fill:#2affef;stroke:none}#qr svg{filter:drop-shadow(0 0 1.5px rgba(42,255,239,.9))}
 .hint{color:var(--muted);font-size:13px;margin-top:12px}
-.share{margin-top:14px;background:linear-gradient(135deg,#7dfff4 0%,#2affef 45%,#00d9c5 100%);border:1px solid #7dfff4;color:#04312d;box-shadow:0 0 8px rgba(42,255,239,.8),0 0 18px rgba(42,255,239,.45),inset 0 1px 0 rgba(255,255,255,.6);animation:glowbox 3s ease-in-out infinite;font:600 14px Manrope,sans-serif;padding:10px 18px;border-radius:999px;cursor:pointer}
-.list a div{min-width:0}.ad{color:var(--muted);font-weight:400;font-size:13px;line-height:1.35}
-.more{margin-top:12px;background:var(--panel);border:1px solid var(--line);border-radius:20px}
-.more summary{padding:15px 16px;font-weight:600;cursor:pointer;list-style:none}
-.more summary::-webkit-details-marker{display:none}
-.more summary::after{content:"+";float:right;color:var(--accent);font-size:20px;line-height:1}
-.more[open] summary::after{content:"\2212"}
-.more .body{padding:0 16px 16px;text-align:center}
-.list span.ph{font-size:12.5px;white-space:nowrap;font-variant-numeric:tabular-nums}
-.num{font:700 21px/1.2 Unbounded,Manrope,sans-serif;letter-spacing:.04em;margin:4px 0 6px;word-spacing:.15em}
-a.share{display:inline-block;text-decoration:none}
-.share.ic{display:inline-flex;align-items:center;justify-content:center;padding:10px 24px}
-.more .ad{font-size:15px;color:var(--text);margin-bottom:4px}
-@keyframes shine{0%,100%{filter:drop-shadow(0 0 3px rgba(42,255,239,.7)) drop-shadow(0 0 7px rgba(42,255,239,.35)) brightness(1)}50%{filter:drop-shadow(0 0 4px rgba(190,255,250,.95)) drop-shadow(0 0 11px rgba(42,255,239,.7)) brightness(1.25)}}
-@keyframes glowtxt{0%,100%{text-shadow:0 0 4px rgba(42,255,239,.7),0 0 10px rgba(42,255,239,.35)}50%{text-shadow:0 0 5px rgba(200,255,251,.95),0 0 16px rgba(42,255,239,.8)}}
-@keyframes glowbox{0%,100%{box-shadow:0 0 8px rgba(42,255,239,.7),0 0 16px rgba(42,255,239,.35),inset 0 1px 0 rgba(255,255,255,.6)}50%{box-shadow:0 0 12px rgba(190,255,250,.95),0 0 26px rgba(42,255,239,.7),inset 0 1px 0 rgba(255,255,255,.8)}}
-@media (prefers-reduced-motion:reduce){.call svg,.list svg,.co,.tabs button,.share{animation:none}}
+@keyframes glowbox{0%,100%{box-shadow:0 0 8px rgba(42,255,239,.7),0 0 16px rgba(42,255,239,.35),inset 0 1px 0 rgba(255,255,255,.4)}50%{box-shadow:0 0 12px rgba(190,255,250,.95),0 0 26px rgba(42,255,239,.7),inset 0 1px 0 rgba(255,255,255,.7)}}
+@keyframes qrglow{0%,100%{box-shadow:0 0 8px rgba(42,255,239,.6),0 0 18px rgba(42,255,239,.3)}50%{box-shadow:0 0 14px rgba(190,255,250,.95),0 0 30px rgba(42,255,239,.65)}}
+@media (prefers-reduced-motion:reduce){.btn.main,#qr{animation:none}}
+a:focus-visible,button:focus-visible{outline:3px solid var(--tq);outline-offset:2px}
+.tile{position:relative;overflow:hidden;animation:tilepulse 3.2s ease-in-out infinite;animation-delay:var(--d,0s)}
+.tile::after{content:"";position:absolute;top:-60%;left:-90%;width:45%;height:220%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.6),transparent);transform:rotate(20deg);animation:sweep 3.6s ease-in-out infinite;animation-delay:var(--d,0s)}
+.tile svg{animation:wiggle 3.6s ease-in-out infinite;animation-delay:var(--d,0s)}
+.row{animation:rise .6s ease-out both;animation-delay:var(--d,0s)}
+.list .row:nth-child(2){--d:.2s}.list .row:nth-child(3){--d:.4s}.list .row:nth-child(4){--d:.6s}.list .row:nth-child(5){--d:.8s}.list .row:nth-child(6){--d:1s}.list .row:nth-child(7){--d:1.2s}.list .row:nth-child(8){--d:1.4s}
+@keyframes tilepulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@keyframes sweep{0%,55%{left:-90%}100%{left:150%}}
+@keyframes wiggle{0%,68%,100%{transform:rotate(0)}74%{transform:rotate(-14deg)}82%{transform:rotate(11deg)}90%{transform:rotate(-5deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.tile,.tile::after,.tile svg,.row{animation:none}}
+.co{display:inline-block;color:var(--tq);background:linear-gradient(100deg,#2affef 38%,#e6fffd 50%,#2affef 62%) 100% 0/250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 0 5px rgba(42,255,239,.6));animation:shimmer 3.2s linear infinite,coglow 3.2s ease-in-out infinite}
+@keyframes shimmer{0%{background-position:100% 0}100%{background-position:0 0}}
+@keyframes coglow{0%,100%{filter:drop-shadow(0 0 4px rgba(42,255,239,.5))}50%{filter:drop-shadow(0 0 10px rgba(42,255,239,.95))}}
+@media (prefers-reduced-motion:reduce){.co{animation:none;background:none;-webkit-text-fill-color:var(--tq)}}
+#save,#share{position:relative;overflow:hidden;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.45);animation:btnglow 3s ease-in-out infinite}
+#save{--gc:rgba(74,140,255,.65);background:linear-gradient(135deg,#4aa3ff,#2a5bff 55%,#6a3dff)}
+#share{--gc:rgba(255,80,130,.6);background:linear-gradient(135deg,#ffb23f,#ff3d6e 55%,#a23dd6);animation-delay:.5s}
+#save::after,#share::after{content:"";position:absolute;top:-60%;left:-90%;width:45%;height:220%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:rotate(20deg);animation:sweep 3.6s ease-in-out infinite}
+#share::after{animation-delay:.5s}
+#save svg,#share svg{animation:wiggle 3.6s ease-in-out infinite}
+#share svg{animation-delay:.5s}
+@keyframes btnglow{0%,100%{box-shadow:0 0 8px var(--gc),inset 0 1px 0 rgba(255,255,255,.45)}50%{box-shadow:0 0 14px var(--gc),0 0 26px var(--gc),inset 0 1px 0 rgba(255,255,255,.7)}}
+@media (prefers-reduced-motion:reduce){#save,#share,#save::after,#share::after,#save svg,#share svg{animation:none}}
+#save::after,#share::after{display:none}
+#save svg,#share svg{animation:none}
+#save{--gc:rgba(74,140,255,.8);--gc2:rgba(190,215,255,.95)}
+#share{--gc:rgba(255,80,130,.8);--gc2:rgba(255,205,220,.95);animation-delay:0s}
+@keyframes btnglow{0%,100%{box-shadow:0 0 8px var(--gc),0 0 16px var(--gc),inset 0 1px 0 rgba(255,255,255,.4)}50%{box-shadow:0 0 12px var(--gc2),0 0 26px var(--gc),inset 0 1px 0 rgba(255,255,255,.7)}}
+.loc .pin{position:relative;box-shadow:0 0 10px rgba(42,255,239,.45);animation:pinglow 2.4s ease-in-out infinite}
+.loc .pin::before,.loc .pin::after{content:"";position:absolute;inset:-1px;border-radius:50%;border:2px solid rgba(42,255,239,.75);animation:ripple 2.4s ease-out infinite;pointer-events:none}
+.loc .pin::after{animation-delay:1.2s}
+.loc .pin svg{filter:drop-shadow(0 0 4px rgba(42,255,239,.8));animation:pinhop 2.4s ease-in-out infinite}
+@keyframes ripple{0%{transform:scale(1);opacity:.85}100%{transform:scale(1.6);opacity:0}}
+@keyframes pinhop{0%,55%,100%{transform:translateY(0)}20%{transform:translateY(-5px)}35%{transform:translateY(0)}45%{transform:translateY(-2px)}}
+@keyframes pinglow{0%,100%{box-shadow:0 0 8px rgba(42,255,239,.35)}50%{box-shadow:0 0 16px rgba(42,255,239,.8)}}
+@media (prefers-reduced-motion:reduce){.loc .pin,.loc .pin::before,.loc .pin::after,.loc .pin svg{animation:none}.loc .pin::before,.loc .pin::after{display:none}}
+.acts{grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr}
+.btn,.btn.main{flex-direction:column;justify-content:center;gap:6px;min-height:84px;padding:8px;text-align:center;font:600 12.5px/1.2 Manrope,sans-serif}
+.btn svg,.btn.main svg{width:26px;height:26px}
+.btn.main b{display:block;font-size:12.5px;font-weight:600}
+.t3{background:linear-gradient(135deg,#4ee27a,#25d366 55%,#128c4a)}
+.t6{background:linear-gradient(135deg,#2bd870,#07c160 55%,#05964a)}
+.t4{background:linear-gradient(135deg,#46b8f2,#229ed9 60%,#1a7fb8)}
+.t5{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)}
 </style>
 </head>
 <body>
 <main class="wrap">
   <section class="hero">
     <img src="data:image/webp;base64,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" alt="Rasul Bulatov">
-    <div>
+    <div class="who">
       <h1>Rasul Bulatov</h1>
-      <p class="role" data-t="role">Финансовый директор</p>
+      <p class="role">Финансовый директор</p>
+      <div class="bar"></div>
       <p class="co">ООО Hayat Plastics</p>
     </div>
   </section>
 
-  <div class="call">
-    <a href="tel:+998905097557" aria-label="Call UZ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call UZ<small>+998 90 509 75 57</small></a>
-    <a href="tel:+77079740156" aria-label="Call KZ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call KZ<small>+7 707 974 01 56</small></a>
-  </div>
-
-  <nav class="list" aria-label="Contacts">
-    <a href="https://wa.me/77079740156" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>WhatsApp<span class="ph">+7 707 974 01 56 · KZ</span></a>
-    <a href="weixin://" id="wc-link"><svg viewBox="0 0 24 24"><path d="M9 3C5.1 3 2 5.5 2 8.6c0 1.8 1 3.3 2.6 4.3L4 15.5l3-1.5c.6.2 1.3.2 2 .2 3.9 0 7-2.5 7-5.6S12.9 3 9 3Z"/><path d="M22 15.3c0-2.3-2.1-4.2-4.8-4.2s-4.8 1.9-4.8 4.2 2.1 4.2 4.8 4.2c.6 0 1.2-.1 1.7-.2l2 1-.5-1.9c1-.8 1.6-1.9 1.6-3.1Z"/></svg>WeChat<span class="ph">+998 90 509 75 57 · UZ</span></a>
-    <a href="tg://resolve?domain=hayatplastics" id="tg-link" data-web="https://t.me/hayatplastics"><svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Telegram<span>@hayatplastics</span></a>
-    <a href="https://www.instagram.com/hayat_plastics?stkn=OG9mNTM0aXJoMXRj" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>Instagram<span>@hayat_plastics</span></a>
-    <a href="mailto:rasul@hayatplastics.uz"><svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>E-mail<span>rasul@hayatplastics.uz</span></a>
-    <a href="https://hayatplastics.uz" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><b data-t="site" style="font-weight:600">Web site</b><span>hayatplastics.uz</span></a>
-    <a href="https://yandex.ru/maps/?pt=69.315427,41.221520&z=16&l=map" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><div><b data-t="office" style="font-weight:600">Location</b><div class="ad">Тошкент шахар, Бектемир тумани, Олтин топган 43</div></div></a>
+  <nav class="list" aria-label="Контакты">
+    <a class="row" href="tel:+998905097557"><span class="tile t1"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span class="tx"><b>Call UZ</b><i>Позвонить (Узбекистан)</i></span><span class="val">+998 90 509 75 57</span><span class="ch"></span></a>
+    <a class="row" href="tel:+77079740156"><span class="tile t2"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span class="tx"><b>Call KZ</b><i>Позвонить (Казахстан)</i></span><span class="val">+7 707 974 01 56</span><span class="ch"></span></a>
+    <a class="row" href="https://wa.me/77079740156" target="_blank" rel="noopener"><span class="tile t3"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path transform="translate(7 7) scale(.42)" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="#fff" stroke-width="3"/></svg></span><span class="tx"><b>WhatsApp</b><i>Написать в WhatsApp</i></span><span class="val">+7 707 974 01 56</span><span class="ch"></span></a>
+    <a class="row" href="weixin://" id="wc-link"><span class="tile t6"><svg viewBox="0 0 24 24" style="stroke:none"><path fill="#fff" d="M9 3C5.1 3 2 5.5 2 8.6c0 1.8 1 3.3 2.6 4.3L4 15.5l3-1.5c.6.2 1.3.2 2 .2 3.9 0 7-2.5 7-5.6S12.9 3 9 3Z"/><path fill="#fff" stroke="#07c160" stroke-width="1" d="M22 15.3c0-2.3-2.1-4.2-4.8-4.2s-4.8 1.9-4.8 4.2 2.1 4.2 4.8 4.2c.6 0 1.2-.1 1.7-.2l2 1-.5-1.9c1-.8 1.6-1.9 1.6-3.1Z"/><circle cx="6.6" cy="7.4" r="1" fill="#07c160"/><circle cx="11.4" cy="7.4" r="1" fill="#07c160"/><circle cx="15.6" cy="14.6" r=".8" fill="#07c160"/><circle cx="18.8" cy="14.6" r=".8" fill="#07c160"/></svg></span><span class="tx"><b>WeChat</b><i>Написать в WeChat</i></span><span class="val">+998 90 509 75 57</span><span class="ch"></span></a>
+    <a class="row" href="tg://resolve?domain=hayatplastics" id="tg-link" data-web="https://t.me/hayatplastics"><span class="tile t4"><svg viewBox="0 0 24 24" style="stroke:none"><path fill="#fff" d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg></span><span class="tx"><b>Telegram</b><i>Наш канал / Написать</i></span><span class="val">@hayatplastics</span><span class="ch"></span></a>
+    <a class="row" href="https://www.instagram.com/hayat_plastics?stkn=OG9mNTM0aXJoMXRj" target="_blank" rel="noopener"><span class="tile t5"><svg viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></span><span class="tx"><b>Instagram</b><i>Наш Instagram</i></span><span class="val">@hayat_plastics</span><span class="ch"></span></a>
+    <a class="row" href="mailto:rasul@hayatplastics.uz"><span class="tile t2"><svg viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><span class="tx"><b>E-mail</b><i>Написать на почту</i></span><span class="val">rasul@hayatplastics.uz</span><span class="ch"></span></a>
+    <a class="row" href="https://hayatplastics.uz" target="_blank" rel="noopener"><span class="tile t2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><span class="tx"><b>Web site</b><i>Официальный сайт</i></span><span class="val">hayatplastics.uz</span><span class="ch"></span></a>
   </nav>
 
+  <a class="loc" href="https://yandex.ru/maps/?pt=69.315427,41.221520&z=16&l=map" target="_blank" rel="noopener"><span class="pin"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><span><b>Location</b><i>Тошкент шахар, Бектемир тумани, Олтин топган 43</i></span></a>
 
-  <section class="qr">
-    <div class="tabs" role="group">
-      <button data-q="url" aria-pressed="true" data-t="qurl">QR</button><button data-q="vc" aria-pressed="false" data-t="qvc">Contact</button>
-    </div>
-    <div><div id="qr" aria-label="QR"></div></div>
-    <p class="hint" data-t="hint">Scan</p>
-    <button class="share ic" id="share" aria-label="Share" title="Share"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg></button>
-  </section>
+  <div class="acts">
+    <button class="btn main" id="qbtn" type="button"><svg viewBox="0 0 24 24"><rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3M21 21v.01M12 7v3a2 2 0 0 1-2 2H7M3 12h.01M12 3h.01M12 16v.01M16 12h1M21 12v.01M12 21v-1"/></svg><span><b>QR Contact</b></span></button>
+    <button class="btn" id="save" type="button"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>Сохранить в контакты</button>
+    <button class="btn" id="share" type="button"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>Поделиться визиткой</button>
+  </div>
 </main>
+
+<dialog id="qd">
+  <button class="x" id="qx" type="button" aria-label="Закрыть">×</button>
+  <div class="tabs" role="group"><button data-q="url" aria-pressed="true">Визитка</button><button data-q="vc" aria-pressed="false">Контакт</button></div>
+  <div><div id="qr" aria-label="QR"></div></div>
+  <p class="hint">Наведите камеру телефона на код</p>
+</dialog>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
-var T={
-ru:{role:"Финансовый директор",call:"Позвонить / Call",call2:"Позвонить / Call",site:"Web site",office:"Location",qurl:"QR",qvc:"Contact",hint:"Scan",share:"Share",pay:"Реквизиты для перевода",home:"Домашний адрес",onmap:"Открыть на карте"},
-uz:{role:"Moliya direktori",call:"Qo‘ng‘iroq qilish",call2:"Qo‘ng‘iroq qilish",site:"Kompaniya sayti",office:"Ofis xaritada",qurl:"Bu vizitka",qvc:"Kontaktlarga",hint:"Telefon kamerasini kodga qarating",share:"Vizitkani ulashish",pay:"O‘tkazma uchun rekvizitlar",home:"Uy manzili",onmap:"Xaritada ochish"},
-en:{role:"Chief Financial Officer",call:"Call",call2:"Call",site:"Company website",office:"Office on map",qurl:"This card",qvc:"Add to contacts",hint:"Point your phone camera at the code",share:"Share this card",pay:"Payment details",home:"Home address",onmap:"Open on map"}};
-function setLang(l){document.documentElement.lang=l;document.querySelectorAll("[data-t]").forEach(function(e){e.textContent=T[l][e.dataset.t]});
-document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.l===l)});}
-document.querySelectorAll(".lang button").forEach(function(b){b.onclick=function(){setLang(b.dataset.l)}});
-window.CARD_URL="https://pcplasticss-source.github.io/e-card/rasul/";
-var VC="BEGIN:VCARD\nVERSION:3.0\nN:Bulatov;Rasul;;;\nFN:Rasul Bulatov\nORG:ООО Hayat Plastics\nTITLE:Chief Financial Officer\nTEL;TYPE=CELL:+998905097557\nTEL;TYPE=CELL:+77079740156\nEMAIL:rasul@hayatplastics.uz\nURL:https://hayatplastics.uz\nEND:VCARD";
-function draw(m){var box=document.getElementById("qr");try{var q=qrcode(0,"M");q.addData(m==="vc"?VC:(window.CARD_URL||location.href.split("#")[0]));q.make();box.innerHTML=q.createSvgTag(4,0)}catch(e){box.textContent="QR"}
-document.querySelectorAll(".tabs button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.q===m)});}
+var URL_="https://pcplasticss-source.github.io/e-card/rasul/";
+var VC="BEGIN:VCARD\nVERSION:3.0\nN:Bulatov;Rasul;;;\nFN:Rasul Bulatov\nORG:ООО Hayat Plastics\nTITLE:Финансовый директор\nTEL;TYPE=CELL:+998905097557\nTEL;TYPE=CELL:+77079740156\nEMAIL:rasul@hayatplastics.uz\nURL:https://hayatplastics.uz\nEND:VCARD";
+function draw(m){var box=document.getElementById("qr");try{var q=qrcode(0,"M");q.addData(m==="vc"?VC:URL_);q.make();box.innerHTML=q.createSvgTag(4,0)}catch(e){box.textContent="QR"}
+document.querySelectorAll(".tabs button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.q===m)})}
 document.querySelectorAll(".tabs button").forEach(function(b){b.onclick=function(){draw(b.dataset.q)}});
-document.getElementById("share").onclick=function(){var d={title:"Rasul Bulatov — ООО Hayat Plastics",url:location.href};
-if(navigator.share){navigator.share(d).catch(function(){})}else if(navigator.clipboard){navigator.clipboard.writeText(location.href).catch(function(){})}};
+var qd=document.getElementById("qd");
+document.getElementById("qbtn").onclick=function(){draw("vc");qd.showModal?qd.showModal():qd.setAttribute("open","")};
+document.getElementById("qx").onclick=function(){qd.close()};
+qd.addEventListener("click",function(e){if(e.target===qd)qd.close()});
+document.getElementById("save").onclick=function(){try{var u=URL.createObjectURL(new Blob([VC],{type:"text/vcard"})),a=document.createElement("a");a.href=u;a.download="Rasul-Bulatov.vcf";document.body.appendChild(a);a.click();a.remove()}catch(e){location.href="data:text/vcard;charset=utf-8,"+encodeURIComponent(VC)}};
+document.getElementById("share").onclick=function(){var d={title:"Rasul Bulatov — ООО Hayat Plastics",url:URL_};
+if(navigator.share){navigator.share(d).catch(function(){})}else if(navigator.clipboard){navigator.clipboard.writeText(URL_).catch(function(){})}};
 if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(function(){})}
-setLang("ru");draw("url");
+(function(){var a=document.getElementById("tg-link");a.addEventListener("click",function(e){e.preventDefault();var t=setTimeout(function(){if(!document.hidden)location.href=a.dataset.web},1500);document.addEventListener("visibilitychange",function(){if(document.hidden)clearTimeout(t)});location.href=a.getAttribute("href")});
+document.getElementById("wc-link").addEventListener("click",function(){try{navigator.clipboard.writeText("+998905097557")}catch(e){}})})();
 </script>
-<script>(function(){var a=document.getElementById("tg-link");if(!a)return;a.addEventListener("click",function(e){e.preventDefault();var t=setTimeout(function(){if(!document.hidden)location.href=a.dataset.web},1500);document.addEventListener("visibilitychange",function(){if(document.hidden)clearTimeout(t)});location.href=a.getAttribute("href")})})();</script><script>(function(){var w=document.getElementById("wc-link");if(!w)return;w.addEventListener("click",function(){try{navigator.clipboard.writeText("+998905097557")}catch(e){}})})();</script></body>
+</body>
 </html>
